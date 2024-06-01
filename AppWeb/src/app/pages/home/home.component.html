@@ -1,0 +1,37 @@
+<div class="title-container">
+  <p class="Title">HospiTec</p>
+</div>
+<div class="views">
+  <div class="patient-view">
+    <div class="image-container">
+    <img src="../../../assets/images/patient.png">
+    </div>
+    <p class="p-view">Paciente</p>
+    <button class="enter-button" style="margin-top: -1vh;" (click)="changeShowPop()">Ingresar</button>
+    <button class="register-button">Crear cuenta</button>
+  </div>
+  <div class="doctor-view">
+    <div class="image-container">
+      <img src="../../../assets/images/doctor.png">
+    </div>
+    <p class="p-view">Doctor</p>
+    <button class="enter-button" (click)="changeShowPop()">Ingresar</button>
+  </div>
+  <div class="personal-view">
+    <div class="image-container">
+      <img class="img-staff" src="../../../assets/images/staff.png">
+    </div>
+    <p class="p-view">Personal Administrativo</p>
+    <button class="enter-button" (click)="changeShowPop()">Ingresar</button>
+  </div>
+</div>
+<div class="pop-over" *ngIf="showPop">
+  <img>
+  <div class="entries-container">
+    <p class="p-log-in">Inicio Sesión</p>
+    <input placeholder="Cédula">
+    <input placeholder="Contraseña">
+    <button class="continue-button">Continuar</button>
+  </div>
+
+</div>

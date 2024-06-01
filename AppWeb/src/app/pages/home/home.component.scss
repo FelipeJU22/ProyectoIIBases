@@ -1,0 +1,132 @@
+@import '../../../mixins.scss';
+$color-azul-claro: #5DADE2;
+$color-azul-oscuro: #2874A6;
+$color-blanco: #FFFFFF;
+$color-gris-claro: #D5DBDB;
+$color-verde-claro: #58D68D;
+:host {
+  display: block;
+  height: 100%;
+}
+.views{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10vh;
+
+}
+.doctor-view{
+  margin-left: 4vw;
+  margin-right: 4vw;
+  border-radius: 16px;
+  background-color: $color-azul-oscuro;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2vh;
+}
+.patient-view{
+  border-radius: 16px;
+  background-color: $color-azul-oscuro;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.personal-view{
+  border-radius: 16px;
+  background-color: $color-azul-oscuro;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.image-container{
+  width: 12vw;
+  height: 12vw;
+  background-color: #5DADE2;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+img{
+  width: 9vw;
+}
+.img-staff{
+  width: 13vw;
+}
+.enter-button{
+  background-color: $color-verde-claro;
+  border-radius: 20px;
+  @include mulish(12, 14.5px, white);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 8vw;
+  margin-bottom: 2vh;
+}
+.register-button{
+  background-color: $color-azul-claro;
+  border-radius: 20px;
+  @include mulish(12, 14.5px, white);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 8vw;
+  margin-bottom: 2vh;
+}
+.register-button{
+  outline: none; /* Asegura que tampoco aparezca al enfocarse */
+}
+.title-container{
+  height: 10vh;
+  width: 100vw;
+  margin-top: -3vh;
+  margin-left: -1.1vh;
+  background-color: $color-gris-claro;
+  display: flex;
+  align-items: center
+}
+.Title{
+  @include mulish-extrabold(18px, 20px, $color-verde-claro);
+  margin-left: 2vw;
+
+}
+.p-view{
+  @include poppins(18px, 20px, $color-gris-claro)
+}
+.pop-over{
+  position: absolute;
+  z-index: 1;
+  top:50%;
+  left: 41%;
+  background-color: $color-verde-claro;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  border-radius: 20px;
+}
+input{
+  margin-bottom: 2vh;
+  border:none;
+  border-radius: 20px;
+  @include mulish(12px,14.4px,$color-gris-claro);
+}
+.continue-button{
+  margin-bottom: 2vh;
+  border:none;
+  border-radius: 20px;
+  background-color: $color-azul-oscuro;
+  @include mulish(12, 14.5px, white);
+}
+.p-log-in{
+  @include mulish-extrabold(18px, 20px, $color-gris-claro);
+}
+.entries-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
