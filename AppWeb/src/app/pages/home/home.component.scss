@@ -1,4 +1,5 @@
 @import '../../../mixins.scss';
+
 $color-azul-claro: #5DADE2;
 $color-azul-oscuro: #2874A6;
 $color-blanco: #FFFFFF;
@@ -64,56 +65,57 @@ img{
 .enter-button{
   background-color: $color-verde-claro;
   border-radius: 20px;
-  @include mulish(12, 14.5px, white);
+  @include mulish(15, 17.2px, white);
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 8vw;
+  width: 6vw;
+  height: 3vh;
   margin-bottom: 2vh;
+  margin-top: 2vh;
 }
 .register-button{
   background-color: $color-azul-claro;
   border-radius: 20px;
-  @include mulish(12, 14.5px, white);
+  @include mulish(15, 17.2px, white);
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 8vw;
+  width: 6vw;
+  height: 3vh;
   margin-bottom: 2vh;
 }
 .register-button{
-  outline: none; /* Asegura que tampoco aparezca al enfocarse */
+  outline: none;
 }
 .title-container{
   height: 10vh;
   width: 100vw;
-  margin-top: -3vh;
   margin-left: -1.1vh;
   background-color: $color-gris-claro;
   display: flex;
   align-items: center
 }
 .Title{
-  @include mulish-extrabold(18px, 20px, $color-verde-claro);
+  @include mulish-extrabold(24px, 26.5px, $color-verde-claro);
   margin-left: 2vw;
 
 }
 .p-view{
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   @include poppins(18px, 20px, $color-gris-claro)
 }
-.pop-over{
-  position: absolute;
-  z-index: 1;
-  top:50%;
-  left: 41%;
-  background-color: $color-verde-claro;
-  padding-left: 3vw;
-  padding-right: 3vw;
-  border-radius: 20px;
-}
+
 input{
-  margin-bottom: 2vh;
   border:none;
-  border-radius: 20px;
-  @include mulish(12px,14.4px,$color-gris-claro);
+  @include mulish(16px,19.3px, white);
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+  &::placeholder {
+    color: white;
+  }
+  background-color: transparent;
 }
 .continue-button{
   margin-bottom: 2vh;
@@ -129,4 +131,88 @@ input{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.modal-title{
+  @include mulish-extrabold(20px, 22px, white)
+}
+.white-button {
+  color: white;
+  border-color: white;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
+.custom-close-btn {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.custom-close-btn::before,
+.custom-close-btn::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 1.5rem;
+  background-color: $color-gris-claro;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.custom-close-btn::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.custom-sub-close--btn {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.custom-sub-close-btn::before,
+.custom-sub-close-btn::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 1.5rem;
+  background-color: $color-gris-claro;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.custom-sub-close-btn::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.img-calendar{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.button-r-pathology{
+  width: 0.5vw;
+  background-color: transparent;
+  border-color: transparent;
+}
+.form-input {
+  margin-bottom: 1rem;
+}
+.input-group{
+  margin-left: -0.7vh;
+}
+.custom-button{
+  background-color: $color-verde-claro;
+  border-color: transparent;
 }

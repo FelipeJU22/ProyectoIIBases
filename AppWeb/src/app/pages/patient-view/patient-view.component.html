@@ -1,0 +1,72 @@
+<div class="title-container">
+  <p class="Title"> HospiTec</p>
+</div>
+    <img class="background-image"   src="../../../assets/images/patient-view/patient-view.png">
+<div class="options-container" >
+  <div class="card mx-2" style="width: 18rem;">
+    <img src="../../../assets/images/patient-view/patient-reserv.jpg" class="card-img-top" alt="...">
+    <div class="card-body custom-card-body">
+      <h5 class="card-title custom-card-title">Reservación de camilla</h5>
+      <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button  type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+            Opciones
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="open(reserveTable)">Reservar camilla</button>
+            <button ngbDropdownItem>Mostrar camillas reservadas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mx-2" style="width: 18rem;" >
+    <img src="../../../assets/images/patient-view/historial.jpg" class="card-img-top"  alt="...">
+    <div class="card-body custom-card-body">
+      <h5 class="card-title custom-card-title">Historial Clínico</h5>
+      <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a  class="btn btn-primary custom-button" (click)="navigateToOptions('History')">Continuar</a>
+    </div>
+  </div>
+  <div class="card mx-2" style="width: 18rem;" >
+    <img src="../../../assets/images/patient-view/rating.png" class="card-img-top"  alt="...">
+    <div class="card-body custom-card-body">
+      <h5 class="card-title custom-card-title">Evaluación servicio</h5>
+      <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a  class="btn btn-primary custom-button" (click)="navigateToOptions('Ratings')" >Continuar</a>
+    </div>
+  </div>
+</div>
+<h1 class="Title-view">Vista paciente</h1>
+
+<ng-template #reserveTable let-modal style="background-color: #2874A6;">
+	<div class="modal-header" style="background-color: #2874A6;">
+		<p class="modal-title">Inicio Sesión</p>
+		<button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body" style="background-color: #5DADE2;">
+    <form [formGroup]="formRA">
+      <div class="input-group">
+        <input
+          id="dateOfBirth"
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #dp="ngbDatepicker"
+          placeholder="Fecha de nacimiento"
+          formControlName = "dateOfBirth"
+        />
+        <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+          <img class="img-calendar"  src="../../../assets/images/calendar.png">
+        </button>
+      </div>
+      <input formControlName="password" type="password" placeholder="Contraseña">
+    </form>
+	</div>
+	<div class="modal-footer" style="background-color: #2874A6;">
+		<button type="button" class="btn btn-outline white-button" (click)="modal.close('Save click')">Continuar</button>
+	</div>
+</ng-template>
+
