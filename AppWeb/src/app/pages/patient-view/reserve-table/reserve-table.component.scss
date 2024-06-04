@@ -1,0 +1,58 @@
+@import '../../../../mixins.scss';
+$color-azul-claro: #5DADE2;
+$color-azul-oscuro: #2874A6;
+$color-blanco: #FFFFFF;
+$color-gris-claro: #D5DBDB;
+$color-verde-claro: #58D68D;
+.img-calendar{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+input{
+  border:none;
+  @include mulish(16px,19.3px, white);
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+  &::placeholder {
+    color: white;
+  }
+  background-color: transparent;
+}
+.modal-title{
+  @include mulish-extrabold(20px, 22px, white)
+}
+
+.white-button {
+  color: white;
+  border-color: white;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
+.custom-item{
+  background-color: transparent;
+  @include mulish(15px, 17.2px, $color-gris-claro);
+  width: 12.2vw;
+}
+.custom-list{
+  margin-top: 1vh;
+}
+.duration-container{
+  width: 100%;
+  text-align: right;
+}
+.duration{
+  @include mulish(16px,19.3px, white);
+}
+.button-r-pathology{
+  width: 0.5vw;
+  background-color: transparent;
+  border-color: transparent;
+}

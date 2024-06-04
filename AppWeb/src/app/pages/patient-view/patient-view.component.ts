@@ -1,13 +1,13 @@
 import { Component, TemplateRef, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalDismissReasons, NgbDatepickerConfig, NgbDatepickerModule, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { IDate } from '../../models/date.model';
-
+import { ModalDismissReasons, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { ReserveTableComponent } from './reserve-table/reserve-table.component';
 @Component({
   selector: 'app-patient-view',
   standalone: true,
-  imports: [NgbDropdownModule, ReactiveFormsModule, NgbDatepickerModule],
+  imports: [NgbDropdownModule, ReactiveFormsModule, CommonModule, ReserveTableComponent],
   templateUrl: './patient-view.component.html',
   styleUrl: './patient-view.component.scss'
 })
@@ -15,25 +15,16 @@ export class PatientViewComponent {
   private modalService = inject(NgbModal);
   formRA: FormGroup;
   closeResult = '';
-  //Fechas de prueba
-  disabledDates: IDate[] = [
-    { year: 2024, month: 6, day: 7 },
-    { year: 2024, month: 6, day: 14 },
-    { year: 2024, month: 7, day: 4 }
-  ];
 
-  constructor(private fb: FormBuilder ,private _router: Router, private config: NgbDatepickerConfig){
+
+
+  constructor(private fb: FormBuilder ,private _router: Router){
     this.formRA = this.fb.group({
       startDate: [''],
       procedures: this.fb.array(['']),
     });
   }
-  ngOnInit(){
-    //Hace falta la inyección de la base de datos
-    this.config.markDisabled = (date: { year: number, month: number, day: number }) => {
-      return this.isDateDisabled(date);
-    };
-  }
+
   navigateToOptions(selectedOption:string){
     switch(selectedOption){
       case 'History':
@@ -52,10 +43,7 @@ export class PatientViewComponent {
 			(reason) => {
 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 			},
-      ).finally(() => {
-         this.resetForm();
-      });
-
+      )
 	}
   private getDismissReason(reason: any): string {
 		switch (reason) {
@@ -68,13 +56,23 @@ export class PatientViewComponent {
 		}
 	}
   resetForm() {
-    this.formRA.patchValue({
-      startDate: null,
-    });
+
   }
-  isDateDisabled(date: { year: number, month: number, day: number }): boolean {
-    return this.disabledDates.some(d =>
-      d.year === date.year && d.month === date.month && d.day === date.day
-    );
+  onCloseModal(reason: string) {
+    this.modalService.dismissAll(reason);
+    console.log(reason);
+    if(reason === "Cross click"){
+      this.formRA.patchValue({
+        startDate: null,
+      });
+    }
+    else{
+      const formData = this.formRA.value;
+      const startDate = formData.startDate;
+      this.formRA.patchValue({
+        startDate: null,
+      });
+    }
   }
+
 }

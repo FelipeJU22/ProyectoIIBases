@@ -1,0 +1,49 @@
+<div class="modal-header" style="background-color: #2874A6;">
+  <p class="modal-title">Reservar camilla</p>
+  <button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="closeModal.emit('Cross click')"></button>
+</div>
+<div class="modal-body" style="background-color: #5DADE2;">
+  <form [formGroup]="formRA">
+    <div class="input-group">
+      <input
+        id="startDate"
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dp"
+        ngbDatepicker
+        #dp="ngbDatepicker"
+        placeholder="Fecha de ingreso"
+        formControlName = "startDate"
+      />
+      <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+        <img class="img-calendar"  src="../../../assets/images/calendar.png">
+      </button>
+    </div>
+  </form>
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button  type="button" class="btn btn-outline white-button" id="dropdownBasic1" ngbDropdownToggle>
+        Agregar procedimiento
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem *ngFor="let procedure of procedures" (click)="addProcedure(procedure.name, procedure.time)">
+           {{procedure.name}} duración: {{procedure.time}} días
+        </button>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group custom-list" >
+    <div *ngFor="let sProcedure of selectedProcedures" style="display: flex;">
+      <li class="list-group-item custom-item" >{{sProcedure}}</li>
+      <button class="button-r-pathology" (click)="removeProcedure(sProcedure)" >
+        <img src="../../../assets/images/equis.png" style="width: 0.5vw;">
+      </button>
+    </div>
+  </ul>
+  <div class="duration-container">
+    <p class="duration" *ngIf="totalDays>0">Duración: {{totalDays}} días</p>
+  </div>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+  <button type="button" class="btn btn-outline white-button" (click)="closeModal.emit('Save click')">Continuar</button>
+</div>

@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GlobalComponent } from '../../global-component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgbDatepickerModule],
+  imports: [CommonModule, ReactiveFormsModule, NgbDatepickerModule, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -23,7 +25,7 @@ export class HomeComponent {
   selectedView: string ="";
   model: any;
 
-  constructor(private fb: FormBuilder, private _router: Router){
+  constructor(private fb: FormBuilder, private _router: Router, private _http: HttpClient){
     this.formLI = this.fb.group({
       id: [''],
       password: ['']
@@ -44,7 +46,7 @@ export class HomeComponent {
         })
       ])
     });
-    this.pathologies.removeAt(0);
+
 
   }
   open(content: TemplateRef<any>, view:string) {
@@ -90,18 +92,35 @@ export class HomeComponent {
   }
   signIn(){
     const formData = this.formRG.value;
-    const name = formData.name;
-    const lastName1 = formData.lastName1;
-    const lastName2 = formData.lastName2;
-    const id = formData.id;
-    const phoneNumber: number = formData.phoneNumber;
-    const adress = formData.adress;
-    const password = formData.password;
-    const dateOfBirth = formData.dateOfBirth;
-    const pathologies = this.pathologies;
-    if(name != null && lastName1 !=null && lastName2 != null && id != null && phoneNumber != null && adress != null && password != null
-      && dateOfBirth != null){
+    const stuff = formData.pathologies;
+    const pathologies: string[] = [] ;
+    const treatments: string[] =[];
+    console.log(stuff);
+    for(let procedure of stuff){
+      pathologies.push(procedure.pathology)
+    }
+    for(let procedure of stuff){
+      treatments.push(procedure.treatment);
+    }
+    console.log(pathologies);
+    console.log(treatments);
+    let pacienteRegistrado = {
+      cedula: formData.id,
+      telefono: formData.phoneNumber,
+      nombre: formData.name,
+      apellido1 : formData.lastName1,
+      apellido2 : formData.lastName2,
+      direccion: formData.adress,
+      patologias : pathologies,
+      tratPatologia: treatments,
+      fechaNacimiento : new Date(formData.dateOfBirth.year, formData.dateOfBirth.month -1, formData.dateOfBirth.day),
+      contraseña : formData.password
+    }
+    console.log(pacienteRegistrado);
+    if(pacienteRegistrado.nombre != null && pacienteRegistrado.apellido1 !=null && pacienteRegistrado.apellido2 != null && pacienteRegistrado.cedula != null &&
+      pacienteRegistrado.telefono != null && pacienteRegistrado.direccion != null && pacienteRegistrado.contraseña != null && pacienteRegistrado.fechaNacimiento != null){
         this.navigateToViews();
+        this._http.post(GlobalComponent.APIUrl + 'Paciente/CrearPaciente', pacienteRegistrado).subscribe();
     }
   }
   resetForm() {
@@ -127,6 +146,7 @@ export class HomeComponent {
     switch(this.selectedView){
       case 'Doctor':
         this._router.navigate(['/doctor']);
+        console.log('here');
         break;
       case 'Patient':
         this._router.navigate(['/paciente'])
