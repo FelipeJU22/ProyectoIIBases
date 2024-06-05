@@ -1,0 +1,42 @@
+<div *ngIf="view === 'list'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Seleccione un salón</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <ul>
+        <li *ngFor="let room of roomList">
+            {{ room.numeroSalon }}
+            {{ room.nombreSalon }}
+            <button (click)="selectRoom(room)">Modificar</button>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="view === 'form'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Modificar Salón {{selectedRoom?.numeroSalon}}</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="modifyForm" (ngSubmit)="submitModification()">
+            <!-- <input id="roomNumber" formControlName="roomNumber" disabled defaultValue="1000" type="text" /> -->
+
+            <label for="roomName">Nombre Salón</label>
+            <input id="roomName" formControlName="roomName" type="text" />
+
+            <label for="roomCapacity">Capacidad Salón</label>
+            <input id="roomCapacity" formControlName="roomCapacity" type="text" />
+
+            <label for="floor">Piso</label>
+            <input id="floor" formControlName="floor" type="text" />
+
+            <label for="gender">Género</label>
+            <input id="gender" formControlName="gender" type="text" />
+
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="view = 'list'">Cancelar</button>
+        </form>
+    </div>
+</div>

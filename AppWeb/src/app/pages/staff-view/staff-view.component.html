@@ -1,1 +1,138 @@
-<p>staff-view works!</p>
+<div class="title-container">
+    <p class="Title">HospiTec</p>
+</div>
+<img class="background-image" src="../../../assets/images/staff-view/staff-banner.jpg">
+<div class="options-container">
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/habitacion-medica.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Salones</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="open(newRoomForm)">Crear Salón</button>
+                        <button ngbDropdownItem (click)="getRooms2('modify', modifyRoom)">Modificar Salón</button>
+                        <button ngbDropdownItem (click)="getRooms2('delete', deleteRoom)">Eliminar Salón</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/equipo-medico.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Equipo Médico</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>Agregar equipo médico</button>
+                        <button ngbDropdownItem>Modificar equipo médico</button>
+                        <button ngbDropdownItem>Eliminar equipo médico</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/patient-view/patient-reserv.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Camas</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>Agregar camas</button>
+                        <button ngbDropdownItem>Modificar camas</button>
+                        <button ngbDropdownItem>Eliminar camas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/procedimientos.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Procedimientos Médicos</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>Agregar Procedimiento</button>
+                        <button ngbDropdownItem>Modificar Procedimiento</button>
+                        <button ngbDropdownItem>Eliminar Procedimiento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/personal-medico.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Personal</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>Agregar Personal</button>
+                        <button ngbDropdownItem>Modificar Personal</button>
+                        <button ngbDropdownItem>Eliminar Personal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/subir-excel.png" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Carga de Pacientes</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <a class="btn btn-primary custom-button">Continuar</a>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/patient-view/rating.png" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Reporte de áreas de mejora</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <a class="btn btn-primary custom-button">Continuar</a>
+        </div>
+    </div>
+</div>
+
+<h1 class="Title-view">Bienvenido Administrador</h1>
+
+<ng-template #newRoomForm let-modal>
+    <app-new-room [formNewRoom]="formNewRoom" (closeModal)="onCloseModal($event)"></app-new-room>
+</ng-template>
+
+<ng-template #modifyRoom let-modal>
+    <app-modify-instance [roomList]="roomList" (closeModal)="onCloseModal($event)"></app-modify-instance>
+</ng-template>
+
+<ng-template #deleteRoom let-modal>
+    <app-delete-room [roomList]="roomList" (closeModal)="onCloseModal($event)"></app-delete-room>
+</ng-template>

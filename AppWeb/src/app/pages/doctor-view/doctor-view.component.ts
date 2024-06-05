@@ -11,10 +11,10 @@ import { GlobalComponent } from '../../global-component';
   styleUrl: './doctor-view.component.scss'
 })
 export class DoctorViewComponent {
-  constructor( private _http: HttpClient){
+  constructor(private _http: HttpClient) {
   }
-  ngOnInit(){
-    this._http.get(GlobalComponent.APIUrl + 'Paciente/GetAllPaciente').subscribe((data: any)=>{
+  ngOnInit() {
+    this._http.get(GlobalComponent.APIUrl + '/Salon/GetAllSalones').subscribe((data: any) => {
       console.log(data);
     })
   }

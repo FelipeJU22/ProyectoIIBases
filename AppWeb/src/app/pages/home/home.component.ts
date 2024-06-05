@@ -1,4 +1,4 @@
-import { Component, inject ,TemplateRef} from '@angular/core';
+import { Component, inject, TemplateRef } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalDismissReasons, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -18,14 +18,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class HomeComponent {
 
   private modalService = inject(NgbModal);
-	closeResult = '';
+  closeResult = '';
   formLI: FormGroup;
   formRG: FormGroup;
   showPop: boolean = false;
-  selectedView: string ="";
+  selectedView: string = "";
   model: any;
 
-  constructor(private fb: FormBuilder, private _router: Router, private _http: HttpClient){
+  constructor(private fb: FormBuilder, private _router: Router, private _http: HttpClient) {
     this.formLI = this.fb.group({
       id: [''],
       password: ['']
@@ -49,57 +49,57 @@ export class HomeComponent {
 
 
   }
-  open(content: TemplateRef<any>, view:string) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-			(result) => {
-				this.closeResult = `Closed with: ${result}`;
-        if(view != ''){
+  open(content: TemplateRef<any>, view: string) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+        if (view != '') {
           this.selectedView = view;
           this.logIn();
         }
-        else{
+        else {
           this.selectedView = 'Patient'
           this.signIn();
         }
 
-			},
-			(reason) => {
-				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-			},
-      ).finally(() => {
-        this.resetForm();
-      });
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    ).finally(() => {
+      this.resetForm();
+    });
 
-	}
+  }
 
-	private getDismissReason(reason: any): string {
-		switch (reason) {
-			case ModalDismissReasons.ESC:
-				return 'by pressing ESC';
-			case ModalDismissReasons.BACKDROP_CLICK:
-				return 'by clicking on a backdrop';
-			default:
-				return `with: ${reason}`;
-		}
-	}
+  private getDismissReason(reason: any): string {
+    switch (reason) {
+      case ModalDismissReasons.ESC:
+        return 'by pressing ESC';
+      case ModalDismissReasons.BACKDROP_CLICK:
+        return 'by clicking on a backdrop';
+      default:
+        return `with: ${reason}`;
+    }
+  }
   logIn() {
     const formData = this.formLI.value;
     const id = formData.id;
     const password = formData.password;
-    if( id != null && password){
+    if (id != null && password) {
       this.navigateToViews();
     }
   }
-  signIn(){
+  signIn() {
     const formData = this.formRG.value;
     const stuff = formData.pathologies;
-    const pathologies: string[] = [] ;
-    const treatments: string[] =[];
+    const pathologies: string[] = [];
+    const treatments: string[] = [];
     console.log(stuff);
-    for(let procedure of stuff){
+    for (let procedure of stuff) {
       pathologies.push(procedure.pathology)
     }
-    for(let procedure of stuff){
+    for (let procedure of stuff) {
       treatments.push(procedure.treatment);
     }
     console.log(pathologies);
@@ -108,19 +108,19 @@ export class HomeComponent {
       cedula: formData.id,
       telefono: formData.phoneNumber,
       nombre: formData.name,
-      apellido1 : formData.lastName1,
-      apellido2 : formData.lastName2,
+      apellido1: formData.lastName1,
+      apellido2: formData.lastName2,
       direccion: formData.adress,
-      patologias : pathologies,
+      patologias: pathologies,
       tratPatologia: treatments,
-      fechaNacimiento : new Date(formData.dateOfBirth.year, formData.dateOfBirth.month -1, formData.dateOfBirth.day),
-      contraseña : formData.password
+      fechaNacimiento: new Date(formData.dateOfBirth.year, formData.dateOfBirth.month - 1, formData.dateOfBirth.day),
+      contraseña: formData.password
     }
     console.log(pacienteRegistrado);
-    if(pacienteRegistrado.nombre != null && pacienteRegistrado.apellido1 !=null && pacienteRegistrado.apellido2 != null && pacienteRegistrado.cedula != null &&
-      pacienteRegistrado.telefono != null && pacienteRegistrado.direccion != null && pacienteRegistrado.contraseña != null && pacienteRegistrado.fechaNacimiento != null){
-        this.navigateToViews();
-        this._http.post(GlobalComponent.APIUrl + 'Paciente/CrearPaciente', pacienteRegistrado).subscribe();
+    if (pacienteRegistrado.nombre != null && pacienteRegistrado.apellido1 != null && pacienteRegistrado.apellido2 != null && pacienteRegistrado.cedula != null &&
+      pacienteRegistrado.telefono != null && pacienteRegistrado.direccion != null && pacienteRegistrado.contraseña != null && pacienteRegistrado.fechaNacimiento != null) {
+      this.navigateToViews();
+      this._http.post(GlobalComponent.APIUrl + 'Paciente/CrearPaciente', pacienteRegistrado).subscribe();
     }
   }
   resetForm() {
@@ -136,14 +136,14 @@ export class HomeComponent {
       phoneNumber: null,
       adress: null,
       password: null,
-      dateofBirth:null,
+      dateofBirth: null,
     })
-    while(this.pathologies.length>0){
+    while (this.pathologies.length > 0) {
       this.pathologies.removeAt(this.pathologies.length - 1)
     }
   }
-  navigateToViews(){
-    switch(this.selectedView){
+  navigateToViews() {
+    switch (this.selectedView) {
       case 'Doctor':
         this._router.navigate(['/doctor']);
         console.log('here');

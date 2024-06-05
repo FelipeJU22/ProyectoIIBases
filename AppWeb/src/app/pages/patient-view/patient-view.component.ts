@@ -16,17 +16,15 @@ export class PatientViewComponent {
   formRA: FormGroup;
   closeResult = '';
 
-
-
-  constructor(private fb: FormBuilder ,private _router: Router){
+  constructor(private fb: FormBuilder, private _router: Router) {
     this.formRA = this.fb.group({
       startDate: [''],
       procedures: this.fb.array(['']),
     });
   }
 
-  navigateToOptions(selectedOption:string){
-    switch(selectedOption){
+  navigateToOptions(selectedOption: string) {
+    switch (selectedOption) {
       case 'History':
         this._router.navigate(['/paciente/historial'])
         break;
@@ -36,37 +34,37 @@ export class PatientViewComponent {
     }
   }
   open(content: TemplateRef<any>) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-			(result) => {
-				this.closeResult = `Closed with: ${result}`;
-			},
-			(reason) => {
-				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-			},
-      )
-	}
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      },
+    )
+  }
   private getDismissReason(reason: any): string {
-		switch (reason) {
-			case ModalDismissReasons.ESC:
-				return 'by pressing ESC';
-			case ModalDismissReasons.BACKDROP_CLICK:
-				return 'by clicking on a backdrop';
-			default:
-				return `with: ${reason}`;
-		}
-	}
+    switch (reason) {
+      case ModalDismissReasons.ESC:
+        return 'by pressing ESC';
+      case ModalDismissReasons.BACKDROP_CLICK:
+        return 'by clicking on a backdrop';
+      default:
+        return `with: ${reason}`;
+    }
+  }
   resetForm() {
 
   }
   onCloseModal(reason: string) {
     this.modalService.dismissAll(reason);
     console.log(reason);
-    if(reason === "Cross click"){
+    if (reason === "Cross click") {
       this.formRA.patchValue({
         startDate: null,
       });
     }
-    else{
+    else {
       const formData = this.formRA.value;
       const startDate = formData.startDate;
       this.formRA.patchValue({
