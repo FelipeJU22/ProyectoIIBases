@@ -1,0 +1,33 @@
+<div *ngIf="view === 'list'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Selección de procedimiento</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <ul>
+        <li *ngFor="let procedure of procedureList">
+            {{ procedure.nombre }}
+            {{ procedure.diasRecuperacion }}
+            <button (click)="selectProcedure(procedure)">Modificar</button>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="view === 'form'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Modificar {{selectedProcedure?.nombre}}</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="modifyForm" (ngSubmit)="submitModification()">
+            <!-- <input id="roomNumber" formControlName="roomNumber" disabled defaultValue="1000" type="text" /> -->
+
+            <label for="healingDays">Días de recuperación</label>
+            <input id="healingDays" formControlName="healingDays" type="text" />
+
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="view = 'list'">Cancelar</button>
+        </form>
+    </div>
+</div>

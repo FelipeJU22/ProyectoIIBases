@@ -37,7 +37,7 @@
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                         <button ngbDropdownItem (click)="open(MedicalEquipmentForm)">Agregar equipo médico</button>
                         <button ngbDropdownItem (click)="getEquipment(modifyEquipment)">Modificar equipo médico</button>
-                        <button ngbDropdownItem>Eliminar equipo médico</button>
+                        <button disabled ngbDropdownItem>Eliminar equipo médico</button>
                     </div>
                 </div>
             </div>
@@ -55,9 +55,9 @@
                         Opciones
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>Agregar camas</button>
+                        <button ngbDropdownItem (click)="open(bedForm)">Agregar camas</button>
                         <button ngbDropdownItem>Modificar camas</button>
-                        <button ngbDropdownItem>Eliminar camas</button>
+                        <button disabled ngbDropdownItem>Eliminar camas</button>
                     </div>
                 </div>
             </div>
@@ -75,9 +75,9 @@
                         Opciones
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>Agregar Procedimiento</button>
-                        <button ngbDropdownItem>Modificar Procedimiento</button>
-                        <button ngbDropdownItem>Eliminar Procedimiento</button>
+                        <button ngbDropdownItem (click)="open(procedureForm)">Agregar Procedimiento</button>
+                        <button ngbDropdownItem (click)="getProcedure(modifyProcedure)">Modificar Procedimiento</button>
+                        <button disabled ngbDropdownItem>Eliminar Procedimiento</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                         Opciones
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>Agregar Personal</button>
+                        <button ngbDropdownItem (click)="open(staffForm)">Agregar Personal</button>
                         <button ngbDropdownItem>Modificar Personal</button>
                         <button ngbDropdownItem>Eliminar Personal</button>
                     </div>
@@ -125,6 +125,7 @@
 
 <h1 class="Title-view">Bienvenido Administrador</h1>
 
+<!-- Templates for Room managemnt -->
 <ng-template #newRoomForm let-modal>
     <app-new-room [formNewRoom]="formNewRoom" (closeModal)="onCloseModal($event)"></app-new-room>
 </ng-template>
@@ -137,11 +138,41 @@
     <app-delete-room [roomList]="roomList" (closeModal)="onCloseModal($event)"></app-delete-room>
 </ng-template>
 
+<!-- Templates for Equipmnet managemnt -->
 <ng-template #MedicalEquipmentForm let-modal>
     <app-new-medical-equipment (closeModal)="onCloseModal($event)"></app-new-medical-equipment>
 </ng-template>
 
 <ng-template #modifyEquipment let-modal>
+    <app-modify-medical-equipment [medicalEqList]="medicalEqList"
+        (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
+</ng-template>
+
+<!-- Templates for Bed managemnt -->
+<ng-template #bedForm let-modal>
+    <app-new-bed (closeModal)="onCloseModal($event)"></app-new-bed>
+</ng-template>
+
+<ng-template #modifyBed let-modal>
+    <app-modify-medical-equipment [medicalEqList]="medicalEqList"
+        (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
+</ng-template>
+
+<!-- Templates for Procedure managemnt -->
+<ng-template #procedureForm let-modal>
+    <app-new-procedure (closeModal)="onCloseModal($event)"></app-new-procedure>
+</ng-template>
+
+<ng-template #modifyProcedure let-modal>
+    <app-modify-procedure [procedureList]="procedureList" (closeModal)="onCloseModal($event)"></app-modify-procedure>
+</ng-template>
+
+<!-- Templates for Personal managemnt -->
+<ng-template #staffForm let-modal>
+    <app-new-personal (closeModal)="onCloseModal($event)"></app-new-personal>
+</ng-template>
+
+<ng-template #modifyStaff let-modal>
     <app-modify-medical-equipment [medicalEqList]="medicalEqList"
         (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
 </ng-template>

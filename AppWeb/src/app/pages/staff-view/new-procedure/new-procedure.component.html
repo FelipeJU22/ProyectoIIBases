@@ -1,0 +1,15 @@
+<div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Agregar Procedimiento</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+        (click)="closeModal.emit('Cross click')"></button>
+</div>
+
+<div class="modal-body" style="background-color: #5DADE2;">
+    <form [formGroup]="formNewProcedure">
+        <input type="text" id="name" placeholder="Nombre del Procedimiento" formControlName="name" />
+        <input type="text" id="healingDays" placeholder="Días en recuperación" formControlName="healingDays" />
+    </form>
+    <div class="modal-footer" style="background-color: #2874A6;">
+        <button type="button" class="btn btn-outline white-button" (click)="addProcedure()">Continuar</button>
+    </div>
+</div>

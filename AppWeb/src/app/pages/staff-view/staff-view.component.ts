@@ -11,6 +11,10 @@ import { DeleteRoomComponent } from './delete-room/delete-room.component';
 import { ModifyInstanceComponent } from './modify-instance/modify-instance.component';
 import { NewMedicalEquipmentComponent } from './new-medical-equipment/new-medical-equipment.component';
 import { ModifyMedicalEquipmentComponent } from './modify-medical-equipment/modify-medical-equipment.component';
+import { NewBedComponent } from './new-bed/new-bed.component';
+import { NewProcedureComponent } from './new-procedure/new-procedure.component';
+import { ModifyProcedureComponent } from './modify-procedure/modify-procedure.component';
+import { NewPersonalComponent } from './new-personal/new-personal.component';
 
 @Component({
   selector: 'app-staff-view',
@@ -25,7 +29,11 @@ import { ModifyMedicalEquipmentComponent } from './modify-medical-equipment/modi
     DeleteRoomComponent,
     ModifyInstanceComponent,
     NewMedicalEquipmentComponent,
-    ModifyMedicalEquipmentComponent
+    ModifyMedicalEquipmentComponent,
+    NewBedComponent,
+    NewProcedureComponent,
+    ModifyProcedureComponent,
+    NewPersonalComponent
   ],
   templateUrl: './staff-view.component.html',
   styleUrl: './staff-view.component.scss'
@@ -35,6 +43,7 @@ export class StaffViewComponent {
   formNewRoom: FormGroup;
   roomList: any[] = [];
   medicalEqList: any[] = [];
+  procedureList: any[] = [];
   closeResult = '';
 
   constructor(private fb: FormBuilder, private _router: Router, private config: NgbDatepickerConfig, private _http: HttpClient) {
@@ -99,6 +108,15 @@ export class StaffViewComponent {
     this._http.get(GlobalComponent.APIUrl + '/EquipoMedico/GetAllEquipos').subscribe((data: any) => {
       this.medicalEqList = data;
       console.log('EqList: ', data)
+    })
+    this.open(modalTemplate);
+  }
+
+  getProcedure(modalTemplate: TemplateRef<any>) {
+    this._http.get(GlobalComponent.APIUrl + '/Procedimiento/GetAllProcedimientos').subscribe((data: any) => {
+      this.procedureList = data;
+      console.log('EqList: ', this.procedureList)
+      console.log('Data: ', data)
     })
     this.open(modalTemplate);
   }

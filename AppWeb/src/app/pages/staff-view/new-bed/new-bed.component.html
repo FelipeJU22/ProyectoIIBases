@@ -1,1 +1,23 @@
-<p>new-bed works!</p>
+<form [formGroup]="formNewBed" (ngSubmit)="addBed()">
+    <div>
+        <label for="number">Número</label>
+        <input id="number" formControlName="number" />
+    </div>
+    <div>
+        <label *ngFor="let room of roomList; let i = index">
+            <input type="radio" formControlName="room" [value]="room" />
+            {{ room.nombreSalon }}
+        </label>
+    </div>
+    <div formArrayName="equipment">
+        <label *ngFor="let equipmentCtrl of equipmentControls; let i = index">
+            <input type="checkbox" [formControlName]="i" />
+            {{ equipmentList[i]?.nombre }}
+        </label>
+    </div>
+    <div>
+        <label for="uci">UCI</label>
+        <input type="checkbox" id="uci" formControlName="uci" />
+    </div>
+    <button type="submit">Añadir Cama</button>
+</form>
