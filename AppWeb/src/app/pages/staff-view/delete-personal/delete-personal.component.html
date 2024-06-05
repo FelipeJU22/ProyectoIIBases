@@ -1,16 +1,17 @@
 <div class="modal-header" style="background-color: #2874A6;">
-    <p class="modal-title">Eliminar Salón</p>
+    <p class="modal-title">Eliminar Personal</p>
     <button type="button" class="btn-close custom-close-btn" aria-label="Close"
         (click)="closeModal.emit('Cross click')"></button>
 </div>
 
 <div class="modal-body" style="background-color: #5DADE2;">
-    <h3>Salón a eliminar</h3>
+    <h3>Perfil a eliminar</h3>
     <ul>
-        <li *ngFor="let room of roomList">
-            {{ room.numeroSalon }}
-            {{ room.nombreSalon }}
-            <button (click)="deleteRoom(room.numeroSalon)">Eliminar</button>
+        <li *ngFor="let staff of staffList">
+            {{ staff.cedula }}
+            {{ staff.nombre }}
+            {{ staff.apellido1 }}
+            <button (click)="deleteStaff(staff.cedula)">Eliminar</button>
         </li>
     </ul>
 </div>

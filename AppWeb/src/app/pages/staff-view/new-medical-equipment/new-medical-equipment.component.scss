@@ -9,7 +9,27 @@
     border-color: white;
 }
 
+.modal-body {
+    display: flex;
+}
+
 .white-button:hover {
     background-color: white;
     color: #2874A6;
+}
+
+input {
+    border: none;
+    @include mulish(16px, 19.3px, white);
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: white;
+    }
+
+    background-color: transparent;
 }

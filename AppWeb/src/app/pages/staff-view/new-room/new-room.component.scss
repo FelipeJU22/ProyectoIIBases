@@ -23,3 +23,26 @@ input {
 
     background-color: transparent;
 }
+
+.white-button {
+    color: white;
+    border-color: white;
+}
+
+.white-button:hover {
+    background-color: white;
+    color: #2874A6;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.list-item span {
+    margin-right: 10px;
+}

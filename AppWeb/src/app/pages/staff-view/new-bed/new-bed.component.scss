@@ -1,0 +1,51 @@
+@import '../../../../mixins.scss';
+
+.modal-title {
+    @include mulish-extrabold(20px, 22px, white)
+}
+
+.modal-body {
+    display: flex;
+}
+
+.subsection {
+    margin: 1rem;
+}
+
+.subsection p {
+    font-size: 15px;
+}
+
+.subsection label {
+    margin: 0.5rem 0.8rem;
+}
+
+.white-button {
+    color: white;
+    border-color: white;
+}
+
+.white-button:hover {
+    background-color: white;
+    color: #2874A6;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+// input {
+//     border: none;
+//     @include mulish(16px, 19.3px, white);
+
+//     &:focus,
+//     &:focus-visible {
+//         outline: none;
+//     }
+
+//     &::placeholder {
+//         color: white;
+//     }
+
+//     background-color: transparent;
+// }

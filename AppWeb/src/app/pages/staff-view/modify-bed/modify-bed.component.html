@@ -1,1 +1,54 @@
-<p>modify-bed works!</p>
+<div *ngIf="view === 'list'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Seleccionar Cama</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <div class="modal-body" style="background-color: #5DADE2;">
+        <div>
+            <ul>
+                <li *ngFor="let bed of bedList" class="list-item">
+                    <span> Cama {{ bed.numero }}</span>
+                    <button class="btn btn-outline white-button" (click)="selectBed(bed)">Modificar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="view === 'form'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Modificar Cama {{selectedBed?.numero}}</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <div class="modal-body" style="background-color: #5DADE2;">
+        <form [formGroup]="modifyForm" (ngSubmit)="modifyBed()">
+            <!-- <input id="roomNumber" formControlName="roomNumber" disabled defaultValue="1000" type="text" /> -->
+
+            <div>
+                <label for="number">Número</label>
+                <input id="number" formControlName="number" />
+            </div>
+            <div>
+                <label *ngFor="let room of roomList; let i = index">
+                    <input type="radio" formControlName="room" [value]="room.numeroSalon" />
+                    {{ room.nombreSalon }}
+                </label>
+            </div>
+            <div formArrayName="equipment">
+                <label *ngFor="let equipmentCtrl of equipmentControls; let i = index">
+                    <input type="checkbox" [formControlName]="i" />
+                    {{ equipmentList[i]?.nombre }}
+                </label>
+            </div>
+            <div>
+                <label for="uci">UCI</label>
+                <input type="checkbox" id="uci" formControlName="uci" />
+
+                <button class="btn btn-outline white-button" type="submit">Modificar Cama</button>
+            </div>
+            <button (click)="view = 'list'">Cancelar</button>
+        </form>
+    </div>
+</div>

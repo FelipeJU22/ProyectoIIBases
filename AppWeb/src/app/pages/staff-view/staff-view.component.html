@@ -56,7 +56,7 @@
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                         <button ngbDropdownItem (click)="open(bedForm)">Agregar camas</button>
-                        <button ngbDropdownItem>Modificar camas</button>
+                        <button ngbDropdownItem (click)="getBeds(modifyBed)">Modificar camas</button>
                         <button disabled ngbDropdownItem>Eliminar camas</button>
                     </div>
                 </div>
@@ -96,8 +96,8 @@
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                         <button ngbDropdownItem (click)="open(staffForm)">Agregar Personal</button>
-                        <button ngbDropdownItem>Modificar Personal</button>
-                        <button ngbDropdownItem>Eliminar Personal</button>
+                        <button ngbDropdownItem (click)="getStaff(modifyStaff)">Modificar Personal</button>
+                        <button ngbDropdownItem (click)="open(deleteStaff)">Eliminar Personal</button>
                     </div>
                 </div>
             </div>
@@ -154,8 +154,7 @@
 </ng-template>
 
 <ng-template #modifyBed let-modal>
-    <app-modify-medical-equipment [medicalEqList]="medicalEqList"
-        (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
+    <app-modify-bed [bedList]="bedList" (closeModal)="onCloseModal($event)"></app-modify-bed>
 </ng-template>
 
 <!-- Templates for Procedure managemnt -->
@@ -173,6 +172,9 @@
 </ng-template>
 
 <ng-template #modifyStaff let-modal>
-    <app-modify-medical-equipment [medicalEqList]="medicalEqList"
-        (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
+    <app-modify-personal [staffList]="staffList" (closeModal)="onCloseModal($event)"></app-modify-personal>
+</ng-template>
+
+<ng-template #deleteStaff let-modal>
+    <app-delete-personal (closeModal)="onCloseModal($event)"></app-delete-personal>
 </ng-template>

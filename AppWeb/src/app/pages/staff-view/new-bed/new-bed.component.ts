@@ -77,7 +77,7 @@ export class NewBedComponent {
     this._http.post<any>(`${GlobalComponent.APIUrl}HistorialClinico/CrearCama`, bedData, { headers })
       .subscribe((res) => {
         console.log(res);
-        this.closeModal.emit('Bed added successfully');
+        this.closeModal.emit('Cross click');
       });
 
     console.log(bedData);

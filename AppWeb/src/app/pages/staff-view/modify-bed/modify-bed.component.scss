@@ -1,0 +1,35 @@
+@import '../../../../mixins.scss';
+
+.modal-title {
+    @include mulish-extrabold(20px, 22px, white)
+}
+
+.modal-body {
+    display: flex;
+}
+
+.white-button {
+    color: white;
+    border-color: white;
+}
+
+.white-button:hover {
+    background-color: white;
+    color: #2874A6;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 10px;
+}
+
+.list-item span {
+    margin-right: 2.5rem;
+}

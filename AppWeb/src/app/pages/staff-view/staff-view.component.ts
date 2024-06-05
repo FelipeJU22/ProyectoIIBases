@@ -15,6 +15,9 @@ import { NewBedComponent } from './new-bed/new-bed.component';
 import { NewProcedureComponent } from './new-procedure/new-procedure.component';
 import { ModifyProcedureComponent } from './modify-procedure/modify-procedure.component';
 import { NewPersonalComponent } from './new-personal/new-personal.component';
+import { ModifyPersonalComponent } from './modify-personal/modify-personal.component';
+import { ModifyBedComponent } from './modify-bed/modify-bed.component';
+import { DeletePersonalComponent } from './delete-personal/delete-personal.component';
 
 @Component({
   selector: 'app-staff-view',
@@ -33,7 +36,10 @@ import { NewPersonalComponent } from './new-personal/new-personal.component';
     NewBedComponent,
     NewProcedureComponent,
     ModifyProcedureComponent,
-    NewPersonalComponent
+    NewPersonalComponent,
+    ModifyPersonalComponent,
+    ModifyBedComponent,
+    DeletePersonalComponent
   ],
   templateUrl: './staff-view.component.html',
   styleUrl: './staff-view.component.scss'
@@ -44,6 +50,8 @@ export class StaffViewComponent {
   roomList: any[] = [];
   medicalEqList: any[] = [];
   procedureList: any[] = [];
+  staffList: any[] = [];
+  bedList: any[] = [];
   closeResult = '';
 
   constructor(private fb: FormBuilder, private _router: Router, private config: NgbDatepickerConfig, private _http: HttpClient) {
@@ -115,7 +123,25 @@ export class StaffViewComponent {
   getProcedure(modalTemplate: TemplateRef<any>) {
     this._http.get(GlobalComponent.APIUrl + '/Procedimiento/GetAllProcedimientos').subscribe((data: any) => {
       this.procedureList = data;
-      console.log('EqList: ', this.procedureList)
+      console.log('procedureList: ', this.procedureList)
+      console.log('Data: ', data)
+    })
+    this.open(modalTemplate);
+  }
+
+  getStaff(modalTemplate: TemplateRef<any>) {
+    this._http.get(GlobalComponent.APIUrl + 'Personal/GetAllPersonal').subscribe((data: any) => {
+      this.staffList = data;
+      console.log('staffList: ', this.staffList)
+      console.log('Data: ', data)
+    })
+    this.open(modalTemplate);
+  }
+
+  getBeds(modalTemplate: TemplateRef<any>) {
+    this._http.get(GlobalComponent.APIUrl + 'HistorialClinico/GetAllCamas').subscribe((data: any) => {
+      this.bedList = data;
+      console.log('BedList: ', this.bedList)
       console.log('Data: ', data)
     })
     this.open(modalTemplate);
