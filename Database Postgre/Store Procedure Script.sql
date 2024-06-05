@@ -23,8 +23,7 @@ CREATE OR REPLACE PROCEDURE crearCama(
     IN p_numeroCama integer,
     IN p_equiposMedicos TEXT[],  -- Usamos un array de TEXT para los equipos médicos
     IN p_salon integer,
-    IN p_camaUCI boolean,
-	IN p_disponible boolean
+    IN p_camaUCI boolean
 )
 LANGUAGE plpgsql
 AS $$
@@ -32,8 +31,8 @@ DECLARE
     equipo TEXT;  -- Variable para almacenar cada equipo médico del array
 BEGIN
     -- Insertar la cama en la tabla "Camas"
-    INSERT INTO "Camas" ("numeroCama", salon, "camaUCI", disponible)
-    VALUES (p_numeroCama, p_salon, p_camaUCI, p_disponible);
+    INSERT INTO "Camas" ("numeroCama", salon, "camaUCI")
+    VALUES (p_numeroCama, p_salon, p_camaUCI);
 
     -- Insertar los equipos médicos en la tabla "EquipoPorCama"
     FOREACH equipo IN ARRAY p_equiposMedicos
