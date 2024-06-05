@@ -6,10 +6,12 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } f
 import { Router } from '@angular/router';
 import { GlobalComponent } from '../../global-component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SaveCredentialsPService } from '../../services/save-credentials-p.service';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgbDatepickerModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, NgbDatepickerModule, HttpClientModule, FileUploadComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -25,7 +27,7 @@ export class HomeComponent {
   selectedView: string ="";
   model: any;
 
-  constructor(private fb: FormBuilder, private _router: Router, private _http: HttpClient){
+  constructor(private fb: FormBuilder, private _router: Router, private _http: HttpClient,private _credentialsPService: SaveCredentialsPService){
     this.formLI = this.fb.group({
       id: [''],
       password: ['']
@@ -47,7 +49,6 @@ export class HomeComponent {
       ])
     });
 
-
   }
   open(content: TemplateRef<any>, view:string) {
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -61,7 +62,6 @@ export class HomeComponent {
           this.selectedView = 'Patient'
           this.signIn();
         }
-
 			},
 			(reason) => {
 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -87,7 +87,7 @@ export class HomeComponent {
     const id = formData.id;
     const password = formData.password;
     if( id != null && password){
-      this.navigateToViews();
+      this.navigateToViews(id, password);
     }
   }
   signIn(){
@@ -95,15 +95,12 @@ export class HomeComponent {
     const stuff = formData.pathologies;
     const pathologies: string[] = [] ;
     const treatments: string[] =[];
-    console.log(stuff);
     for(let procedure of stuff){
       pathologies.push(procedure.pathology)
     }
     for(let procedure of stuff){
       treatments.push(procedure.treatment);
     }
-    console.log(pathologies);
-    console.log(treatments);
     let pacienteRegistrado = {
       cedula: formData.id,
       telefono: formData.phoneNumber,
@@ -113,13 +110,13 @@ export class HomeComponent {
       direccion: formData.adress,
       patologias : pathologies,
       tratPatologia: treatments,
-      fechaNacimiento : new Date(formData.dateOfBirth.year, formData.dateOfBirth.month -1, formData.dateOfBirth.day),
+      fechaNacimiento : formData.dateOfBirth.year+ '-' + formData.dateOfBirth.month+ '-' + formData.dateOfBirth.day,
       contraseña : formData.password
     }
     console.log(pacienteRegistrado);
     if(pacienteRegistrado.nombre != null && pacienteRegistrado.apellido1 !=null && pacienteRegistrado.apellido2 != null && pacienteRegistrado.cedula != null &&
       pacienteRegistrado.telefono != null && pacienteRegistrado.direccion != null && pacienteRegistrado.contraseña != null && pacienteRegistrado.fechaNacimiento != null){
-        this.navigateToViews();
+        this._router.navigate(['/paciente']);
         this._http.post(GlobalComponent.APIUrl + 'Paciente/CrearPaciente', pacienteRegistrado).subscribe();
     }
   }
@@ -142,16 +139,24 @@ export class HomeComponent {
       this.pathologies.removeAt(this.pathologies.length - 1)
     }
   }
-  navigateToViews(){
+  navigateToViews(id: number, password: string){
     switch(this.selectedView){
       case 'Doctor':
-        this._router.navigate(['/doctor']);
-        console.log('here');
+        this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula='+ id +'&contrase%C3%B1a=' + password).subscribe((data: any)=>{
+          console.log(data);
+        })
+       this._router.navigate(['/doctor']);
         break;
       case 'Patient':
-        this._router.navigate(['/paciente'])
+        this._http.get(GlobalComponent.APIUrl + 'Paciente/LoginPaciente?cedula='+ id +'&contrase%C3%B1a=' + password).subscribe((data: any)=>{
+          if(data!=null){
+            this._credentialsPService.setCredenciales(data.nombre, data.apellido1, data.apellido2, data.cedula);
+            this._router.navigate(['/paciente']);
+          }
+        })
         break;
       case 'Staff':
+        this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula='+ id +'&contrase%C3%B1a=' + password)
         this._router.navigate(['/personal'])
         break;
     }

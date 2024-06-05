@@ -1,0 +1,11 @@
+<div class="modal-header" style="background-color: #2874A6;">
+  <p class="modal-title">Evaluación de servicio</p>
+  <button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="closeModal.emit('Cross click')"></button>
+</div>
+<div class="modal-body" style="background-color: #5DADE2;">
+  <ngb-rating [(rate)]="rating" (rateChange)="onRatingChange($event)" />
+  <hr />
+  <pre>Rate: <b>{{ rating }}</b></pre>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+</div>

@@ -1,4 +1,4 @@
 export interface IProcedure{
-  name: string;
-  time: number;
+  nombre: string;
+  diasRecuperacion: number;
 }

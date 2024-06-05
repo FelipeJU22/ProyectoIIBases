@@ -1,1 +1,81 @@
-<p>doctor-view works!</p>
+<div class="title-container">
+  <p class="Title"> HospiTec</p>
+</div>
+<img class="background-image"   src="../../../assets/images/doctor-view/doctor-view.png">
+<div class="options-container" >
+  <div class="card mx-2" style="width: 18rem;" >
+    <img src="../../../assets/images/patient-view/historial.jpg" class="card-img-top"  alt="...">
+    <div class="card-body custom-card-body">
+      <h5 class="card-title custom-card-title">Añadir Historial Clínico</h5>
+      <p class="card-text custom-card-text">Revisá tu historial clínico, podrás ver los tratamientos que se te han dado según tus procedimientos</p>
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button  type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+            Opciones
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="open(AddHistory)">Añadir Historial</button>
+            <button ngbDropdownItem >Visualizar Paciente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mx-2" style="width: 18rem;" >
+    <img src="../../../assets/images/doctor-view/add-patient.jpg" class="card-img-top"  alt="...">
+    <div class="card-body custom-card-body">
+      <h5 class="card-title custom-card-title">Añadir paciente</h5>
+      <p class="card-text custom-card-text">Considerando el aseo del hospital, trato del personal y
+        puntualidad de las citas evaluá nuestro servicio</p>
+      <a  class="btn btn-primary custom-button" (click)="open(RegisterPatient)" >Continuar</a>
+    </div>
+  </div>
+</div>
+<ng-template #RegisterPatient let-modal style="background-color: #2874A6;">
+	<div class="modal-header" style="background-color: #2874A6;">
+		<p class="modal-title">Añadir Paciente</p>
+		<button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body" style="background-color: #5DADE2;">
+    <form [formGroup]="formRG">
+      <input formControlName="name" placeholder="Nombre" class="form-input">
+      <input formControlName="lastName1" placeholder="Primer Apellido" class="form-input">
+      <input formControlName="lastName2" placeholder="Segundo Apellido" class="form-input">
+      <input formControlName="id" placeholder="Cédula" class="form-input">
+      <input formControlName="phoneNumber" placeholder="Número de teléfono" class="form-input">
+      <input formControlName="adress" placeholder="Dirección" class="form-input">
+      <input formControlName="password" placeholder="Contraseña" class="form-input">
+      <div class="input-group">
+        <input
+          id="dateOfBirth"
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #dp="ngbDatepicker"
+          placeholder="Fecha de nacimiento"
+          formControlName = "dateOfBirth"
+        />
+        <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+          <img class="img-calendar"  src="../../../assets/images/calendar.png">
+        </button>
+      </div>
+      <div formArrayName="pathologies">
+        <div *ngFor="let pathologyGroup of pathologies.controls; let i = index" [formGroupName]="i" class="pathology-input-group">
+          <input formControlName="pathology" placeholder="Ingrese una patología">
+          <input formControlName="treatment" placeholder="Ingrese su tratamiento">
+          <button class="button-r-pathology" (click)="removePathology(i)">
+            <img src="../../../assets/images/equis.png" style="width: 0.5vw;">
+          </button>
+        </div>
+      </div>
+      <a  class="btn btn-primary custom-button" (click)="addPathology()" >Agregar Patología</a>
+    </form>
+	</div>
+	<div class="modal-footer" style="background-color: #2874A6;">
+		<button class="btn btn-outline white-button" type="button" (click)="modal.close('Save click')">Continuar</button>
+	</div>
+</ng-template>
+<ng-template #AddHistory let-modal style="background-color: #2874A6;">
+  <app-add-history (closeModal)="onCloseModal($event)"></app-add-history>
+</ng-template>

@@ -20,18 +20,6 @@
       </button>
     </div>
   </form>
-  <div class="col">
-    <div ngbDropdown class="d-inline-block">
-      <button  type="button" class="btn btn-outline white-button" id="dropdownBasic1" ngbDropdownToggle>
-        Agregar procedimiento
-      </button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem *ngFor="let procedure of procedures" (click)="addProcedure(procedure.name, procedure.time)">
-           {{procedure.name}} duración: {{procedure.time}} días
-        </button>
-      </div>
-    </div>
-  </div>
   <ul class="list-group custom-list" >
     <div *ngFor="let sProcedure of selectedProcedures" style="display: flex;">
       <li class="list-group-item custom-item" >{{sProcedure}}</li>
@@ -40,10 +28,23 @@
       </button>
     </div>
   </ul>
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button  type="button" class="btn btn-outline white-button" id="dropdownBasic1" ngbDropdownToggle>
+        Agregar procedimiento
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem *ngFor="let procedure of procedures" (click)="addProcedure(procedure.nombre, procedure.diasRecuperacion)">
+           {{procedure.nombre}} duración: {{procedure.diasRecuperacion}} días
+        </button>
+      </div>
+    </div>
+  </div>
   <div class="duration-container">
     <p class="duration" *ngIf="totalDays>0">Duración: {{totalDays}} días</p>
   </div>
 </div>
 <div class="modal-footer" style="background-color: #2874A6;">
-  <button type="button" class="btn btn-outline white-button" (click)="closeModal.emit('Save click')">Continuar</button>
+  <button type="button" class="btn btn-outline white-button" (click)="generarReserva()">Generar Reserva</button>
 </div>
+<ngb-alert type="warning" *ngIf="error">No hay camas disponibles para esas fechas</ngb-alert>
