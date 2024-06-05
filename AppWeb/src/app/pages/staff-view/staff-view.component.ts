@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { NewRoomComponent } from './new-room/new-room.component';
 import { DeleteRoomComponent } from './delete-room/delete-room.component';
 import { ModifyInstanceComponent } from './modify-instance/modify-instance.component';
+import { NewMedicalEquipmentComponent } from './new-medical-equipment/new-medical-equipment.component';
+import { ModifyMedicalEquipmentComponent } from './modify-medical-equipment/modify-medical-equipment.component';
 
 @Component({
   selector: 'app-staff-view',
@@ -21,7 +23,9 @@ import { ModifyInstanceComponent } from './modify-instance/modify-instance.compo
     HttpClientModule,
     NewRoomComponent,
     DeleteRoomComponent,
-    ModifyInstanceComponent
+    ModifyInstanceComponent,
+    NewMedicalEquipmentComponent,
+    ModifyMedicalEquipmentComponent
   ],
   templateUrl: './staff-view.component.html',
   styleUrl: './staff-view.component.scss'
@@ -30,6 +34,7 @@ export class StaffViewComponent {
   private modalService = inject(NgbModal);
   formNewRoom: FormGroup;
   roomList: any[] = [];
+  medicalEqList: any[] = [];
   closeResult = '';
 
   constructor(private fb: FormBuilder, private _router: Router, private config: NgbDatepickerConfig, private _http: HttpClient) {
@@ -87,6 +92,14 @@ export class StaffViewComponent {
       this.roomList = data;
     })
 
+    this.open(modalTemplate);
+  }
+
+  getEquipment(modalTemplate: TemplateRef<any>) {
+    this._http.get(GlobalComponent.APIUrl + '/EquipoMedico/GetAllEquipos').subscribe((data: any) => {
+      this.medicalEqList = data;
+      console.log('EqList: ', data)
+    })
     this.open(modalTemplate);
   }
 

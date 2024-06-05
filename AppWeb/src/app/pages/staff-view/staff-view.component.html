@@ -35,8 +35,8 @@
                         Opciones
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>Agregar equipo médico</button>
-                        <button ngbDropdownItem>Modificar equipo médico</button>
+                        <button ngbDropdownItem (click)="open(MedicalEquipmentForm)">Agregar equipo médico</button>
+                        <button ngbDropdownItem (click)="getEquipment(modifyEquipment)">Modificar equipo médico</button>
                         <button ngbDropdownItem>Eliminar equipo médico</button>
                     </div>
                 </div>
@@ -135,4 +135,13 @@
 
 <ng-template #deleteRoom let-modal>
     <app-delete-room [roomList]="roomList" (closeModal)="onCloseModal($event)"></app-delete-room>
+</ng-template>
+
+<ng-template #MedicalEquipmentForm let-modal>
+    <app-new-medical-equipment (closeModal)="onCloseModal($event)"></app-new-medical-equipment>
+</ng-template>
+
+<ng-template #modifyEquipment let-modal>
+    <app-modify-medical-equipment [medicalEqList]="medicalEqList"
+        (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
 </ng-template>

@@ -1,0 +1,15 @@
+@import '../../../../mixins.scss';
+
+.modal-title {
+    @include mulish-extrabold(20px, 22px, white)
+}
+
+.white-button {
+    color: white;
+    border-color: white;
+}
+
+.white-button:hover {
+    background-color: white;
+    color: #2874A6;
+}
