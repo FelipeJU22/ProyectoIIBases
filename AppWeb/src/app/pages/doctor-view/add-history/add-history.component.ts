@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { SaveCredentialsPService } from '../../services/save-credentials-p.service';
-import { ICredentialsP } from '../../models/credentialsP.model';
+import { SaveCredentialsPService } from '../../../services/save-credentials-p.service';
+import { ICredentialsP } from '../../../models/credentialsP.model';
+import { GlobalComponent } from '../../../global-component';
 
 @Component({
   selector: 'app-add-history',
@@ -21,24 +22,48 @@ export class AddHistoryComponent {
   treatments: string[] = [];
   constructor(private fb: FormBuilder, private _http: HttpClient, private _credentialsPservice: SaveCredentialsPService){
     this.formRA = this.fb.group({
+      id: [''],
       date: [''],
-      procedure: [''],
-      treatment: [''],
+      plan : this.fb.array([
+        this.fb.group({
+          procedure:[''],
+          treatment:['']
+        })
+      ])
     });
     this.credentials = this._credentialsPservice.getCredenciales();
   }
   addHistory(){
     const formData = this.formRA.value;
     const date = formData.date;
-    this.procedures.push(formData.procedure);
-    this.treatments.push(formData.treatment);
-    let history = {
-      cedulaPaciente: this.credentials.cedula,
-      fechaProcedimiento: date.year + '-' + date.month + '-' + date.day,
-      tratamiento: this.treatments,
-      procedimiento: this.procedures,
+    const procedures: string[] =[];
+    const treatments: string[] =[];
+    const plan = formData.plan;
+    for(let item of plan){
+      procedures.push(item.procedure)
+      treatments.push(item.treatment)
     }
+    let history = {
+      cedulaPaciente: formData.id,
+      fechaProcedimiento: date.year + '-' + date.month + '-' + date.day,
+      tratamiento: treatments,
+      procedimiento: procedures,
+    }
+    this._http.post(GlobalComponent.APIUrl + '/HistorialClinico/AñadirHistorialClinico', history).subscribe();
     console.log(history);
     this.closeModal.emit('Save click');
+  }
+  get plan(){
+    return this.formRA.get('plan') as FormArray;
+  }
+  addPlan(){
+    const planGroup = this.fb.group({
+      procedure:[''],
+      treatment:['']
+    })
+    this.plan.push(planGroup)
+  }
+  removePlan(index: number) {
+    this.plan.removeAt(index);
   }
 }

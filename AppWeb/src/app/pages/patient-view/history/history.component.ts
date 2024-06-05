@@ -21,7 +21,7 @@ export class HistoryComponent {
     this.credentials = this._credentialsPservice.getCredenciales();
   }
   ngOnInit(){
-    this._http.get(GlobalComponent.APIUrl + 'HistorialClinico/ObtenerHistorialCliente?cedula=' + 12345678).subscribe((data: any)=>{
+    this._http.get(GlobalComponent.APIUrl + 'HistorialClinico/ObtenerHistorialCliente?cedula=' + this.credentials.cedula).subscribe((data: any)=>{
       this.history = data;
       console.log(this.history);
     })

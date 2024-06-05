@@ -102,7 +102,7 @@ export class ShowTablesComponent {
     })
   }
   getSelectedRfromDB(){
-    this._http.get(GlobalComponent.APIUrl + 'Reservacion/GetReservacionesCedula?cedula='+ 56789012).subscribe((data: any)=>{
+    this._http.get(GlobalComponent.APIUrl + 'Reservacion/GetReservacionesCedula?cedula='+ this.credentials.cedula).subscribe((data: any)=>{
       this.reservaciones = data;
       console.log(data);
     })

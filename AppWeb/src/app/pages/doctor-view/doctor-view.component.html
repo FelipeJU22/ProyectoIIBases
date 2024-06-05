@@ -1,4 +1,7 @@
 <div class="title-container">
+  <button class="back-button" (click)="goBack()">
+    <img src="../../../assets/images/backButton.png" class="img-back-button">
+  </button>
   <p class="Title"> HospiTec</p>
 </div>
 <img class="background-image"   src="../../../assets/images/doctor-view/doctor-view.png">
@@ -15,7 +18,7 @@
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem (click)="open(AddHistory)">Añadir Historial</button>
-            <button ngbDropdownItem >Visualizar Paciente</button>
+            <button ngbDropdownItem (click)="open(EditHistory)">Modificar Historial</button>
           </div>
         </div>
       </div>
@@ -73,9 +76,12 @@
     </form>
 	</div>
 	<div class="modal-footer" style="background-color: #2874A6;">
-		<button class="btn btn-outline white-button" type="button" (click)="modal.close('Save click')">Continuar</button>
+		<button class="btn btn-outline white-button" type="button" (click)="modal.close('Save click')">Añadir</button>
 	</div>
 </ng-template>
 <ng-template #AddHistory let-modal style="background-color: #2874A6;">
   <app-add-history (closeModal)="onCloseModal($event)"></app-add-history>
+</ng-template>
+<ng-template #EditHistory let-modal style="background-color: #2874A6;">
+  <app-edit-history (closeModal)="onCloseModal($event)"></app-edit-history>
 </ng-template>

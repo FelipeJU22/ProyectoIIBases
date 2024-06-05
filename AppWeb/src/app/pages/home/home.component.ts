@@ -143,9 +143,10 @@ export class HomeComponent {
     switch(this.selectedView){
       case 'Doctor':
         this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula='+ id +'&contrase%C3%B1a=' + password).subscribe((data: any)=>{
-          console.log(data);
+          if(data.rol === 1 || data.rol ===2){
+            this._router.navigate(['/doctor']);
+          }
         })
-       this._router.navigate(['/doctor']);
         break;
       case 'Patient':
         this._http.get(GlobalComponent.APIUrl + 'Paciente/LoginPaciente?cedula='+ id +'&contrase%C3%B1a=' + password).subscribe((data: any)=>{
@@ -156,8 +157,11 @@ export class HomeComponent {
         })
         break;
       case 'Staff':
-        this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula='+ id +'&contrase%C3%B1a=' + password)
-        this._router.navigate(['/personal'])
+        this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula='+ id +'&contrase%C3%B1a=' + password).subscribe((data: any)=>{
+          if(data.rol === 3){
+            this._router.navigate(['/personal'])
+          }
+        })
         break;
     }
   }

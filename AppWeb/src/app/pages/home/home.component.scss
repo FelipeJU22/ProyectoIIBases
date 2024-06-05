@@ -79,7 +79,7 @@ img{
   @include mulish(15, 17.2px, white);
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 6vw;
+  width: auto;
   height: 3vh;
   margin-bottom: 2vh;
 }

@@ -80,3 +80,21 @@ input{
   background-color: transparent;
   border-color: transparent;
 }
+.white-button {
+  color: white;
+  border-color: white;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
+.back-button{
+  margin-top: -1.3vh;
+  width: 2vw;
+  background-color: transparent;
+  border-color: transparent;
+}
+.img-back-button{
+  width: 2vw
+}

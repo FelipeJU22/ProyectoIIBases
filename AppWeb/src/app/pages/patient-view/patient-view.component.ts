@@ -61,4 +61,7 @@ export class PatientViewComponent {
       });
     }
   }
+  goBack(){
+    this._router.navigate(['/home']);
+  }
 }

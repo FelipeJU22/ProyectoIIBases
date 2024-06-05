@@ -1,4 +1,4 @@
-@import '../../../mixins.scss';
+@import '../../../../mixins.scss';
 $color-azul-claro: #5DADE2;
 $color-azul-oscuro: #2874A6;
 $color-blanco: #FFFFFF;
@@ -34,4 +34,18 @@ input{
 .white-button:hover {
   background-color: white;
   color: #2874A6;
+}
+.button-r-pathology{
+  width: 0.5vw;
+  background-color: transparent;
+  border-color: transparent;
+}
+.green-button {
+  color: $color-verde-claro;
+  border-color: $color-verde-claro;
+  margin-top: 1vh;
+}
+.green-button:hover {
+  background-color: $color-verde-claro;
+  color: white;
 }
