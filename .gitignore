@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/API/.vs
+/API/HospiTEC-API/.config
+/API/HospiTEC-API/bin
+/API/HospiTEC-API/obj
+/API/HospiTEC-API/Properties
+/API/HospiTEC-BLL/bin
+/API/HospiTEC-BLL/obj
+/API/HospiTEC-DAL/bin
+/API/HospiTEC-DAL/obj
+/API/HospiTEC-MODEL/bin
+/API/HospiTEC-MODEL/obj
