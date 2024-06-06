@@ -118,7 +118,7 @@
             <h5 class="card-title custom-card-title">Reporte de áreas de mejora</h5>
             <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
                 bulk of the card's content.</p>
-            <a class="btn btn-primary custom-button">Continuar</a>
+            <a class="btn btn-primary custom-button" (click)="open(report)">Continuar</a>
         </div>
     </div>
 </div>
@@ -182,4 +182,7 @@
 <!-- Templates for Personal managemnt -->
 <ng-template #bulkUpload let-modal>
     <app-bulk-load (closeModal)="onCloseModal($event)"></app-bulk-load>
+</ng-template>
+<ng-template #report let-modal >
+  <app-report (closeModal)="onCloseModal($event)"></app-report>
 </ng-template>

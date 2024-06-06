@@ -60,5 +60,13 @@ $color-verde-claro: #58D68D;
 .img-back-button{
   width: 2vw
 }
+.white-button {
+  color: white;
+  border-color: white;
+}
 
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
 

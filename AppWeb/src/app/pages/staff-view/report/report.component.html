@@ -1,0 +1,29 @@
+<div #content>
+  <div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Reporte de áreas de mejora</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="closeModal.emit('Cross click')"></button>
+  </div>
+  <div class="modal-body" style="background-color: #5DADE2;">
+    <table class="table custom-table">
+      <thead>
+        <tr>
+          <th scope="col">Promedio aseo</th>
+          <th scope="col">Promedio trato</th>
+          <th scope="col">Promedio puntualidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr >
+          <td>{{averageA}}</td>
+          <td>{{averageT}}</td>
+          <td>{{averageP}}</td>
+        </tr>
+      </tbody>
+  </table>
+  </div>
+
+  <div class="modal-footer" style="background-color: #2874A6;">
+    <button type="button" class="btn btn-outline white-button" (click)="generatePDF()" >Generar PDF</button>
+  </div>
+
+</div>
