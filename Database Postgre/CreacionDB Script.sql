@@ -123,7 +123,6 @@ ALTER TABLE "EquipoPorCama"
 
 ALTER TABLE "HistorialClinico"
     ADD CONSTRAINT fk_cedulaPaciente FOREIGN KEY ("cedulaPaciente") REFERENCES "Paciente"(cedula),
-    ADD CONSTRAINT fk_procedimiento FOREIGN KEY (procedimiento) REFERENCES "Procedimientos"(nombre);
 
 ALTER TABLE "Personal"
     ADD CONSTRAINT fk_rol FOREIGN KEY (rol) REFERENCES "Rol"(id);
