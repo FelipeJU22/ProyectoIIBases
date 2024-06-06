@@ -1,0 +1,218 @@
+@import '../../../mixins.scss';
+
+$color-azul-claro: #5DADE2;
+$color-azul-oscuro: #2874A6;
+$color-blanco: #FFFFFF;
+$color-gris-claro: #D5DBDB;
+$color-verde-claro: #58D68D;
+:host {
+  display: block;
+  height: 100%;
+}
+.views{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10vh;
+
+}
+.doctor-view{
+  margin-left: 4vw;
+  margin-right: 4vw;
+  border-radius: 16px;
+  background-color: $color-azul-oscuro;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2vh;
+}
+.patient-view{
+  border-radius: 16px;
+  background-color: $color-azul-oscuro;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.personal-view{
+  border-radius: 16px;
+  background-color: $color-azul-oscuro;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.image-container{
+  width: 12vw;
+  height: 12vw;
+  background-color: #5DADE2;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+img{
+  width: 9vw;
+}
+.img-staff{
+  width: 13vw;
+}
+.enter-button{
+  background-color: $color-verde-claro;
+  border-radius: 20px;
+  @include mulish(15, 17.2px, white);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 6vw;
+  height: 3vh;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+}
+.register-button{
+  background-color: $color-azul-claro;
+  border-radius: 20px;
+  @include mulish(15, 17.2px, white);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: auto;
+  height: 3vh;
+  margin-bottom: 2vh;
+}
+.register-button{
+  outline: none;
+}
+.title-container{
+  height: 10vh;
+  width: 100vw;
+  margin-left: -1.1vh;
+  background-color: $color-gris-claro;
+  display: flex;
+  align-items: center
+}
+.Title{
+  @include mulish-extrabold(24px, 26.5px, $color-verde-claro);
+  margin-left: 2vw;
+
+}
+.p-view{
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  @include poppins(18px, 20px, $color-gris-claro)
+}
+
+input{
+  border:none;
+  @include mulish(16px,19.3px, white);
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+  &::placeholder {
+    color: white;
+  }
+  background-color: transparent;
+}
+.continue-button{
+  margin-bottom: 2vh;
+  border:none;
+  border-radius: 20px;
+  background-color: $color-azul-oscuro;
+  @include mulish(12, 14.5px, white);
+}
+.p-log-in{
+  @include mulish-extrabold(18px, 20px, $color-gris-claro);
+}
+.entries-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-title{
+  @include mulish-extrabold(20px, 22px, white)
+}
+.white-button {
+  color: white;
+  border-color: white;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
+.custom-close-btn {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.custom-close-btn::before,
+.custom-close-btn::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 1.5rem;
+  background-color: $color-gris-claro;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.custom-close-btn::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.custom-sub-close--btn {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.custom-sub-close-btn::before,
+.custom-sub-close-btn::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 1.5rem;
+  background-color: $color-gris-claro;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.custom-sub-close-btn::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.img-calendar{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.button-r-pathology{
+  width: 0.5vw;
+  background-color: transparent;
+  border-color: transparent;
+}
+.form-input {
+  margin-bottom: 1rem;
+}
+.input-group{
+  margin-left: -0.7vh;
+}
+.custom-button{
+  background-color: $color-verde-claro;
+  border-color: transparent;
+}

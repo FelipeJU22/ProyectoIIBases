@@ -1,0 +1,30 @@
+<div class="modal-header" style="background-color: #2874A6;">
+  <p class="modal-title">Historial Clínico</p>
+  <button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="closeModal.emit('Cross click')"></button>
+</div>
+<div class="modal-body" style="background-color: #5DADE2;">
+  <table class="table custom-table">
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Procedimiento</th>
+        <th scope="col">Tratamiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let history of history">
+        <td>{{history.fechaProcedimiento}}</td>
+        <td>
+          <p *ngFor="let procedimiento of history.procedimiento">{{procedimiento}}</p>
+        </td>
+        <td>
+          <p *ngFor="let tratamiento of history.tratamiento">{{tratamiento}}</p>
+        </td>
+      </tr>
+    </tbody>
+</table>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+
+</div>
+

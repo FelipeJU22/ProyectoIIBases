@@ -1,0 +1,17 @@
+<div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Eliminar Salón</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+        (click)="closeModal.emit('Cross click')"></button>
+</div>
+
+<div class="modal-body" style="background-color: #5DADE2;">
+    <ul>
+        <li *ngFor="let room of roomList" class="custom-li">
+            {{ room.numeroSalon }}
+            {{ room.nombreSalon }}
+            <button (click)="deleteRoom(room.numeroSalon)" class="btn btn-outline white-button">Eliminar</button>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+</div>

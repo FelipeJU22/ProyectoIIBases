@@ -1,0 +1,29 @@
+@import '../../../../mixins.scss';
+
+h2 {
+    @include mulish-extrabold(30px, 32px, white);
+    background-color: #2874A6;
+    margin-bottom: 1rem;
+}
+
+.modal-body {
+    background-color: #2874A6;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.modal-body input,
+button {
+    margin: 1rem;
+}
+
+.modal-body button {
+    margin: 1rem;
+}
+
+.custom-button {
+    background-color: rgb(48, 160, 20);
+    border-color: transparent;
+    margin: 0;
+}

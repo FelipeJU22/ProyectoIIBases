@@ -1,0 +1,72 @@
+<div class="modal-header" style="background-color: #2874A6;">
+  <p class="modal-title">Reservaciones Camillas</p>
+  <button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="closeModal.emit('Cross click')"></button>
+</div>
+<div class="modal-body" style="background-color: #5DADE2;">
+  <div ngbAccordion [closeOthers]="true" style="display: inline-block;">
+    @for (item of reservaciones; track item) {
+      <div ngbAccordionItem [collapsed]="item !== 'First'">
+        <div class="button-container">
+          <button class="button-p-pathology" (click)="removeReserve(item.ID)">
+            <img src="../../../assets/images/equis.png" style="width: 1vw;">
+          </button>
+        </div>
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton (click)="setSelected(item.ID)">Numero Camilla: {{ item.numeroCama }} Fecha: {{item.fechaIngreso}}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template>
+              <form [formGroup]="formRA">
+                <div class="input-group">
+                  <input
+                    id="startDate"
+                    class="form-control"
+                    placeholder="yyyy-mm-dd"
+                    name="dp"
+                    ngbDatepicker
+                    #dp="ngbDatepicker"
+                    placeholder="Fecha de ingreso"
+                    formControlName = "startDate"
+                  />
+                  <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                    <img class="img-calendar"  src="../../../assets/images/calendar.png">
+                  </button>
+                </div>
+              </form>
+              <ul class="list-group custom-list" >
+                <div *ngFor="let sProcedure of selectedProcedures" style="display: flex;">
+                  <li class="list-group-item custom-item" >{{sProcedure}}</li>
+                  <button class="button-r-pathology" (click)="removeProcedure(sProcedure)" >
+                    <img src="../../../assets/images/equis.png" style="width: 0.5vw;">
+                  </button>
+                </div>
+              </ul>
+              <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                  <button  type="button" class="btn btn-outline green-button" id="dropdownBasic1" ngbDropdownToggle>
+                    Agregar procedimiento
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem *ngFor="let procedure of procedures" (click)="addProcedure(procedure.nombre, procedure.diasRecuperacion)">
+                       {{procedure.nombre}} duración: {{procedure.diasRecuperacion}} días
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+              <div class="duration-container">
+                <p class="duration" *ngIf="totalDays>0">Duración: {{totalDays}} días</p>
+                <button class="btn btn-outline blue-button" (click)="saveChanges()">Guardar Cambios</button>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+  <button type="button" class="btn btn-outline white-button" (click)="closeModal.emit('Save click')">Continuar</button>
+</div>
+<ngb-alert type="warning" *ngIf="error">No hay camas disponibles para esas fechas</ngb-alert>
