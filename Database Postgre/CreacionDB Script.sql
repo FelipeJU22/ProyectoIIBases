@@ -29,7 +29,7 @@ CREATE TABLE "HistorialClinico" (
     "fechaProcedimiento" DATE NOT NULL,
     tratamiento TEXT[] NOT NULL,
     procedimiento TEXT[] NOT NULL,
-    PRIMARY KEY ("cedulaPaciente", procedimiento)
+    PRIMARY KEY ("cedulaPaciente", "fechaProcedimiento", tratamiento, procedimiento)
 );
 
 --5.Crear tabla Paciente
