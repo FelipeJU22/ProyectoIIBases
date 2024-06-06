@@ -25,10 +25,18 @@ export class DeleteRoomComponent {
   constructor(private _http: HttpClient) {
   }
 
+  getRooms() {
+    this._http.get(GlobalComponent.APIUrl + '/Salon/GetAllSalones').subscribe((data: any) => {
+      console.log(data);
+      this.roomList = data;
+    })
+  }
+
   deleteRoom(roomId: string) {
     this._http.delete(GlobalComponent.APIUrl + 'Salon/EliminarSalon?numeroSalon=' + roomId).subscribe((res) => {
       //this.closeModal.emit('Cross click');
       console.log(res);
+      this.getRooms();
     });
   }
 

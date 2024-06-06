@@ -4,10 +4,10 @@
 <div class="views">
   <div class="patient-view">
     <div class="image-container">
-    <img src="../../../assets/images/patient.png">
+      <img src="../../../assets/images/patient.png">
     </div>
     <p class="p-view">Paciente</p>
-    <button class="enter-button"  (click)="open(loginModal, 'Patient')">Ingresar</button>
+    <button class="enter-button" (click)="open(loginModal, 'Patient')">Ingresar</button>
     <button class="register-button" (click)="open(RegisterPatient,'')">Crear cuenta</button>
   </div>
   <div class="doctor-view">
@@ -22,31 +22,33 @@
       <img class="img-staff" src="../../../assets/images/staff.png">
     </div>
     <p class="p-view">Personal Administrativo</p>
-    <button class="enter-button"(click)="open(loginModal, 'Staff')">Ingresar</button>
+    <button class="enter-button" (click)="open(loginModal, 'Staff')">Ingresar</button>
   </div>
 </div>
 
 <ng-template #loginModal let-modal style="background-color: #2874A6;">
-	<div class="modal-header" style="background-color: #2874A6;">
-		<p class="modal-title">Inicio Sesión</p>
-		<button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body" style="background-color: #5DADE2;">
+  <div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Inicio Sesión</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body" style="background-color: #5DADE2;">
     <form [formGroup]="formLI">
       <input formControlName="id" placeholder="Cédula">
       <input formControlName="password" type="password" placeholder="Contraseña">
     </form>
-	</div>
-	<div class="modal-footer" style="background-color: #2874A6;">
-		<button type="button" class="btn btn-outline white-button" (click)="modal.close('Save click')">Continuar</button>
-	</div>
+  </div>
+  <div class="modal-footer" style="background-color: #2874A6;">
+    <button type="button" class="btn btn-outline white-button" (click)="modal.close('Save click')">Continuar</button>
+  </div>
 </ng-template>
 <ng-template #RegisterPatient let-modal style="background-color: #2874A6;">
-	<div class="modal-header" style="background-color: #2874A6;">
-		<p class="modal-title">Crear perfil</p>
-		<button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body" style="background-color: #5DADE2;">
+  <div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Crear perfil</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body" style="background-color: #5DADE2;">
     <form [formGroup]="formRG">
       <input formControlName="name" placeholder="Nombre" class="form-input">
       <input formControlName="lastName1" placeholder="Primer Apellido" class="form-input">
@@ -56,22 +58,15 @@
       <input formControlName="adress" placeholder="Dirección" class="form-input">
       <input formControlName="password" placeholder="Contraseña" class="form-input">
       <div class="input-group">
-        <input
-          id="dateOfBirth"
-          class="form-control"
-          placeholder="yyyy-mm-dd"
-          name="dp"
-          ngbDatepicker
-          #dp="ngbDatepicker"
-          placeholder="Fecha de nacimiento"
-          formControlName = "dateOfBirth"
-        />
+        <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+          #dp="ngbDatepicker" placeholder="Fecha de nacimiento" formControlName="dateOfBirth" />
         <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
-          <img class="img-calendar"  src="../../../assets/images/calendar.png">
+          <img class="img-calendar" src="../../../assets/images/calendar.png">
         </button>
       </div>
       <div formArrayName="pathologies">
-        <div *ngFor="let pathologyGroup of pathologies.controls; let i = index" [formGroupName]="i" class="pathology-input-group">
+        <div *ngFor="let pathologyGroup of pathologies.controls; let i = index" [formGroupName]="i"
+          class="pathology-input-group">
           <input formControlName="pathology" placeholder="Ingrese una patología">
           <input formControlName="treatment" placeholder="Ingrese su tratamiento">
           <button class="button-r-pathology" (click)="removePathology(i)">
@@ -79,12 +74,10 @@
           </button>
         </div>
       </div>
-      <a  class="btn btn-primary custom-button" (click)="addPathology()" >Agregar Patología</a>
+      <a class="btn btn-primary custom-button" (click)="addPathology()">Agregar Patología</a>
     </form>
-	</div>
-	<div class="modal-footer" style="background-color: #2874A6;">
-		<button class="btn btn-outline white-button" type="button" (click)="modal.close('Save click')">Continuar</button>
-	</div>
+  </div>
+  <div class="modal-footer" style="background-color: #2874A6;">
+    <button class="btn btn-outline white-button" type="button" (click)="modal.close('Save click')">Continuar</button>
+  </div>
 </ng-template>
-<app-file-upload></app-file-upload>
-

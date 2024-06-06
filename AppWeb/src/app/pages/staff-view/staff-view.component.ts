@@ -18,6 +18,7 @@ import { NewPersonalComponent } from './new-personal/new-personal.component';
 import { ModifyPersonalComponent } from './modify-personal/modify-personal.component';
 import { ModifyBedComponent } from './modify-bed/modify-bed.component';
 import { DeletePersonalComponent } from './delete-personal/delete-personal.component';
+import { BulkLoadComponent } from './bulk-load/bulk-load.component';
 
 @Component({
   selector: 'app-staff-view',
@@ -39,7 +40,8 @@ import { DeletePersonalComponent } from './delete-personal/delete-personal.compo
     NewPersonalComponent,
     ModifyPersonalComponent,
     ModifyBedComponent,
-    DeletePersonalComponent
+    DeletePersonalComponent,
+    BulkLoadComponent
   ],
   templateUrl: './staff-view.component.html',
   styleUrl: './staff-view.component.scss'

@@ -109,7 +109,7 @@
             <h5 class="card-title custom-card-title">Carga de Pacientes</h5>
             <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
                 bulk of the card's content.</p>
-            <a class="btn btn-primary custom-button">Continuar</a>
+            <button class="btn btn-primary custom-button" (click)="open(bulkUpload)">Subir Pacientes</button>
         </div>
     </div>
     <div class="card mx-2" style="width: 18rem;">
@@ -177,4 +177,9 @@
 
 <ng-template #deleteStaff let-modal>
     <app-delete-personal (closeModal)="onCloseModal($event)"></app-delete-personal>
+</ng-template>
+
+<!-- Templates for Personal managemnt -->
+<ng-template #bulkUpload let-modal>
+    <app-bulk-load (closeModal)="onCloseModal($event)"></app-bulk-load>
 </ng-template>
