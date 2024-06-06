@@ -1,0 +1,42 @@
+{
+  "_id": {
+    "$oid": "665fce6ea44a869df7c9d7d5"
+  },
+  "CedulaPaciente": 118620970,
+  "Aseo": 3,
+  "Trato": 4,
+  "Puntualidad": 5,
+  "Comentario": "Ninguno"
+}
+
+{
+  "_id": {
+    "$oid": "66609c81a44a869df7be9225"
+  },
+  "CedulaPaciente": 12345678,
+  "Aseo": 10,
+  "Trato": 7,
+  "Puntualidad": 8,
+  "Comentario": "Di no man"
+}
+{
+  "_id": {
+    "$oid": "66610031a44a869df7288337"
+  },
+  "CedulaPaciente": 12345678,
+  "Aseo": 8,
+  "Trato": 4,
+  "Puntualidad": 2,
+  "Comentario": "Citas Inpuntuales"
+}
+
+{
+  "_id": {
+    "$oid": "666131e1f3f3585060f6a387"
+  },
+  "CedulaPaciente": 12345678,
+  "Aseo": 10,
+  "Trato": 4,
+  "Puntualidad": 10,
+  "Comentario": "Perfecto man"
+}
