@@ -97,13 +97,14 @@ export class EditHistoryComponent {
       treatments.push(item.treatment)
     }
     let history = {
-      cedulaPaciente: id,
-      fechaProcediemiento: formDataRA.date.year+ '-' +  formDataRA.date.month+ '-' +  formDataRA.date.day,
-      tratamiento: treatments,
+      cedulaPaciente: Number(id),
+      fechaProcedimiento: formDataRA.date.year+ '-' +  formDataRA.date.month+ '-' +  formDataRA.date.day,
       procedimiento: procedures,
+      tratamiento: treatments,
     }
     if(procedures.length>0 && treatments.length>0){
       console.log(history);
+      this._http.put(GlobalComponent.APIUrl + 'HistorialClinico/ModificarHistorialClinico', history).subscribe();
     }
   }
 }

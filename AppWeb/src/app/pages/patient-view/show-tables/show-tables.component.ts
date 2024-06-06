@@ -44,7 +44,6 @@ export class ShowTablesComponent {
     console.log(reserveID);
     this._http.delete(GlobalComponent.APIUrl +  'Reservacion/EliminarReservacion?ID=' + reserveID ).subscribe();
     this.getSelectedRfromDB();
-    console.log('Here');
   }
   setSelected(ID: number){
 
@@ -104,7 +103,6 @@ export class ShowTablesComponent {
   getSelectedRfromDB(){
     this._http.get(GlobalComponent.APIUrl + 'Reservacion/GetReservacionesCedula?cedula='+ this.credentials.cedula).subscribe((data: any)=>{
       this.reservaciones = data;
-      console.log(data);
     })
   }
   saveChanges(){
