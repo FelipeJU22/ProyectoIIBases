@@ -1,7 +1,7 @@
 <div class="title-container">
-  <button class="back-button" (click)="goBack()">
-    <img src="../../../assets/images/backButton.png" class="img-back-button">
-  </button>
+    <button class="back-button" (click)="goBack()">
+        <img src="../../../assets/images/backButton.png" class="img-back-button">
+    </button>
     <p class="Title">HospiTec</p>
 </div>
 <img class="background-image" src="../../../assets/images/staff-view/staff-banner.jpg">
@@ -10,8 +10,8 @@
         <img src="../../../assets/images/staff-view/habitacion-medica.jpg" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Gestión de Salones</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Permite crear, modificar y eliminar la información de los salones del
+                hospital.</p>
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
                     <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
@@ -30,8 +30,8 @@
         <img src="../../../assets/images/staff-view/equipo-medico.jpg" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Gestión de Equipo Médico</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Permite crear y modificar el equipo médico que posee la institución.
+            </p>
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
                     <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
@@ -50,8 +50,7 @@
         <img src="../../../assets/images/patient-view/patient-reserv.jpg" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Gestión de Camas</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Permite crear, modificar la información de las camas del hospital</p>
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
                     <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
@@ -70,8 +69,8 @@
         <img src="../../../assets/images/staff-view/procedimientos.jpg" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Gestión de Procedimientos Médicos</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Permite crear y modificar los procedimientos médicos que se llevan a
+                cabo en la institución</p>
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
                     <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
@@ -90,8 +89,8 @@
         <img src="../../../assets/images/staff-view/personal-medico.jpg" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Gestión de Personal</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Permite crear y modificar los perfiles de los empleados de HospiTec
+            </p>
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
                     <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
@@ -110,8 +109,8 @@
         <img src="../../../assets/images/staff-view/subir-excel.png" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Carga de Pacientes</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Herramienta que permite subir la información de varios de pacientes en
+                una misma transacción.</p>
             <button class="btn btn-primary custom-button" (click)="open(bulkUpload)">Subir Pacientes</button>
         </div>
     </div>
@@ -119,8 +118,8 @@
         <img src="../../../assets/images/patient-view/rating.png" class="card-img-top" alt="...">
         <div class="card-body custom-card-body">
             <h5 class="card-title custom-card-title">Reporte de áreas de mejora</h5>
-            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
-                bulk of the card's content.</p>
+            <p class="card-text custom-card-text">Brinda un reporte de los promedios de las calificaciones proveidas por
+                nuestros pacientes.</p>
             <a class="btn btn-primary custom-button" (click)="open(report)">Continuar</a>
         </div>
     </div>
@@ -187,6 +186,6 @@
 <ng-template #bulkUpload let-modal>
     <app-bulk-load (closeModal)="onCloseModal($event)"></app-bulk-load>
 </ng-template>
-<ng-template #report let-modal >
-  <app-report (closeModal)="onCloseModal($event)"></app-report>
+<ng-template #report let-modal>
+    <app-report (closeModal)="onCloseModal($event)"></app-report>
 </ng-template>
