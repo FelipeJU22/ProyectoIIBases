@@ -34,6 +34,7 @@
     </div>
   </div>
 </div>
+<p class="Title-view">Vista Doctor</p>
 <ng-template #RegisterPatient let-modal style="background-color: #2874A6;">
 	<div class="modal-header" style="background-color: #2874A6;">
 		<p class="modal-title">Añadir Paciente</p>
@@ -78,6 +79,7 @@
 	<div class="modal-footer" style="background-color: #2874A6;">
 		<button class="btn btn-outline white-button" type="button" (click)="modal.close('Save click')">Añadir</button>
 	</div>
+
 </ng-template>
 <ng-template #AddHistory let-modal style="background-color: #2874A6;">
   <app-add-history (closeModal)="onCloseModal($event)"></app-add-history>

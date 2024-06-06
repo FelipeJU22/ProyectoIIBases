@@ -98,3 +98,9 @@ input{
 .img-back-button{
   width: 2vw
 }
+.Title-view{
+  @include mulish-extrabold(50px,57px,white);
+  position: absolute;
+  top: 45%;
+  right: 5%;
+}
