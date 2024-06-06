@@ -4,10 +4,13 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { ReserveTableComponent } from './reserve-table/reserve-table.component';
+import { ShowTablesComponent } from './show-tables/show-tables.component';
+import { HistoryComponent } from './history/history.component';
+import { RatingsComponent } from './ratings/ratings.component';
 @Component({
   selector: 'app-patient-view',
   standalone: true,
-  imports: [NgbDropdownModule, ReactiveFormsModule, CommonModule, ReserveTableComponent],
+  imports: [NgbDropdownModule, ReactiveFormsModule, CommonModule, ReserveTableComponent, ShowTablesComponent, HistoryComponent, RatingsComponent],
   templateUrl: './patient-view.component.html',
   styleUrl: './patient-view.component.scss'
 })
@@ -15,23 +18,11 @@ export class PatientViewComponent {
   private modalService = inject(NgbModal);
   formRA: FormGroup;
   closeResult = '';
-
   constructor(private fb: FormBuilder, private _router: Router) {
     this.formRA = this.fb.group({
       startDate: [''],
       procedures: this.fb.array(['']),
     });
-  }
-
-  navigateToOptions(selectedOption: string) {
-    switch (selectedOption) {
-      case 'History':
-        this._router.navigate(['/paciente/historial'])
-        break;
-      case 'Ratings':
-        this._router.navigate(['/paciente/evaluacion'])
-        break;
-    }
   }
   open(content: TemplateRef<any>) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
@@ -53,12 +44,8 @@ export class PatientViewComponent {
         return `with: ${reason}`;
     }
   }
-  resetForm() {
-
-  }
   onCloseModal(reason: string) {
     this.modalService.dismissAll(reason);
-    console.log(reason);
     if (reason === "Cross click") {
       this.formRA.patchValue({
         startDate: null,
@@ -67,10 +54,14 @@ export class PatientViewComponent {
     else {
       const formData = this.formRA.value;
       const startDate = formData.startDate;
+      console.log('here');
+      console.log(startDate);
       this.formRA.patchValue({
         startDate: null,
       });
     }
   }
-
+  goBack() {
+    this._router.navigate(['/home']);
+  }
 }

@@ -1,13 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NgbDatepickerConfig, NgbDatepickerModule, NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule, NgbDatepickerConfig, NgbDatepickerModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { IProcedure } from '../../../models/procedure.model';
 import { IDate } from '../../../models/date.model';
+import { HttpClient, HttpClientModule, HttpResponse } from '@angular/common/http';
+import { GlobalComponent } from '../../../global-component';
+import { SaveCredentialsPService } from '../../../services/save-credentials-p.service';
+import { ICredentialsP } from '../../../models/credentialsP.model';
+import { tap } from 'rxjs';
 @Component({
   selector: 'app-reserve-table',
   standalone: true,
-  imports: [NgbDatepickerModule, ReactiveFormsModule, CommonModule, NgbDropdownModule],
+  imports: [NgbDatepickerModule, ReactiveFormsModule, CommonModule, NgbDropdownModule, HttpClientModule, NgbAlertModule],
   templateUrl: './reserve-table.component.html',
   styleUrl: './reserve-table.component.scss'
 })
@@ -15,14 +20,9 @@ export class ReserveTableComponent {
 
   @Input() formRA: FormGroup;
   @Output() closeModal = new EventEmitter<string>();
-  procedures: IProcedure[] =[
-    {name:'Sana colita de rana', time: 1},
-    {name: 'Beso de abuelita', time: 2},
-    {name: 'Chaquetón', time: 1},
-    {name: 'Desfibrilación', time:2},
-    {name: 'Eso no es nada', time:1},
-    {name: 'Le falta Dios', time:3}
-  ];
+  credentials: ICredentialsP;
+  procedures: IProcedure[] =[];
+  error: boolean = false;
   //Fechas de prueba
   disabledDates: IDate[] = [
     { day: 7, month: 6, year: 2024 },
@@ -31,25 +31,23 @@ export class ReserveTableComponent {
   ];
   selectedProcedures: string[] = [];
   totalDays:number=0;
-  constructor(private fb: FormBuilder, private config: NgbDatepickerConfig){
+  constructor(private fb: FormBuilder, private config: NgbDatepickerConfig, private _http : HttpClient, private _credentialsPservice: SaveCredentialsPService){
     this.formRA = this.fb.group({
       startDate: [''],
       procedures: this.fb.array(['']),
     });
-    const fechaInicial = new Date(2024, 11, 31); // 31 de diciembre
-  // Sumar días
-  const diasASumar = 2;
-  const fechaFinal = this.sumarDias(fechaInicial, diasASumar);
+    this.credentials = this._credentialsPservice.getCredenciales();
 
-  console.log("Fecha inicial:", fechaInicial.toISOString().slice(0,10));
-  console.log("Días a sumar:", diasASumar);
-  console.log("Fecha final:", fechaFinal.toISOString().slice(0,10));
   }
   ngOnInit(){
     //Hace falta la inyección de la base de datos
     this.config.markDisabled = (date: { year: number, month: number, day: number }) => {
       return this.isDateDisabled(date);
     };
+    this._http.get(GlobalComponent.APIUrl + 'Procedimiento/GetAllProcedimientos').subscribe((data: any)=>{
+      this.procedures = data;
+      console.log(this.procedures);
+    })
   }
   isDateDisabled(date: { year: number, month: number, day: number }): boolean {
     return this.disabledDates.some(d =>
@@ -73,12 +71,45 @@ export class ReserveTableComponent {
   }
   removeProcedure(procedure: string){
     for(let procedureI of this.procedures){
-      if(procedureI.name === procedure){
-        this.totalDays -= procedureI.time;
+      if(procedureI.nombre === procedure){
+        this.totalDays -= procedureI.diasRecuperacion;
         break;
       }
     }
     this.selectedProcedures = this.selectedProcedures.filter((item :string)=> item !== procedure);
+  }
+  generarReserva(){
+    const formData = this.formRA.value;
+    console.log(formData.startDate.year);
+    const DateStartFormatted = new Date(formData.startDate.year, formData.startDate.month -1, formData.startDate.day);
+    const finishDayFinal = this.sumarDias(DateStartFormatted, this.totalDays);
+    const finishYear = finishDayFinal.getFullYear();
+    const finishMonth = (finishDayFinal.getMonth() + 1).toString().padStart(2, '0');
+    const finishDay = finishDayFinal.getDate().toString().padStart(2, '0');
+    let reservation ={
+      cedulaPaciente: this.credentials.cedula,
+      fechaIngreso: formData.startDate.year + "-" + formData.startDate.month + "-" + formData.startDate.day,
+      fechaSalida: finishYear + '-' + finishMonth + '-' + finishDay,
+      nombrePaciente: this.credentials.nombre,
+      procedimientos: this.selectedProcedures,
+    }
+    this._http.post(GlobalComponent.APIUrl + 'Reservacion/VerificarReservacion', reservation, { observe: 'response' }).pipe(
+      tap((response: HttpResponse<any>) => {
+        const statusCode = response.status;
+        console.log(`HTTP Status Code: ${statusCode}`);
+        // Aquí puedes manejar el código de estado como prefieras
+        if (statusCode === 200) {
+          // Manejar éxito
+          console.log('Reservación modificada exitosamente');
+        } else if (statusCode === 500) {
+          this.error = true;
+          console.log('Error en el servidor al modificar la reservación');
+        }
+      })
+    )
+    .subscribe();
+    console.log(reservation);
+    this.closeModal.emit('Save click')
   }
   sumarDias(fecha: Date, diasASumar: number): Date {
     const fechaNueva = new Date(fecha);

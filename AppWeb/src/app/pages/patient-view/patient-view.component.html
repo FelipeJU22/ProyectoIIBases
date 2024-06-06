@@ -1,4 +1,7 @@
 <div class="title-container">
+  <button class="back-button" (click)="goBack()">
+    <img src="../../../assets/images/backButton.png" class="img-back-button">
+  </button>
   <p class="Title"> HospiTec</p>
 </div>
     <img class="background-image"   src="../../../assets/images/patient-view/patient-view.png">
@@ -7,7 +10,7 @@
     <img src="../../../assets/images/patient-view/patient-reserv.jpg" class="card-img-top" alt="...">
     <div class="card-body custom-card-body">
       <h5 class="card-title custom-card-title">Reservación de camilla</h5>
-      <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text custom-card-text">Reservá una camilla, en donde podés escoger la fecha que se adecue a vos, así como los tratamientos que necesités.</p>
       <div class="col">
         <div ngbDropdown class="d-inline-block">
           <button  type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
@@ -15,7 +18,7 @@
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem (click)="open(reserveTable)">Reservar camilla</button>
-            <button ngbDropdownItem>Mostrar camillas reservadas</button>
+            <button ngbDropdownItem (click)="open(showTables)">Mostrar camillas reservadas</button>
           </div>
         </div>
       </div>
@@ -25,16 +28,17 @@
     <img src="../../../assets/images/patient-view/historial.jpg" class="card-img-top"  alt="...">
     <div class="card-body custom-card-body">
       <h5 class="card-title custom-card-title">Historial Clínico</h5>
-      <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a  class="btn btn-primary custom-button" (click)="navigateToOptions('History')">Continuar</a>
+      <p class="card-text custom-card-text">Revisá tu historial clínico, podrás ver los tratamientos que se te han dado según tus procedimientos</p>
+      <a  class="btn btn-primary custom-button" (click)="open(showHistory)">Continuar</a>
     </div>
   </div>
   <div class="card mx-2" style="width: 18rem;" >
     <img src="../../../assets/images/patient-view/rating.png" class="card-img-top"  alt="...">
     <div class="card-body custom-card-body">
       <h5 class="card-title custom-card-title">Evaluación servicio</h5>
-      <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a  class="btn btn-primary custom-button" (click)="navigateToOptions('Ratings')" >Continuar</a>
+      <p class="card-text custom-card-text">Considerando el aseo del hospital, trato del personal y
+        puntualidad de las citas evaluá nuestro servicio</p>
+      <a  class="btn btn-primary custom-button" (click)="open(showRatings)">Continuar</a>
     </div>
   </div>
 </div>
@@ -44,3 +48,14 @@
   <app-reserve-table [formRA]="formRA" (closeModal)="onCloseModal($event)"></app-reserve-table>
 </ng-template>
 
+<ng-template #showTables let-modal>
+  <app-show-tables (closeModal)="onCloseModal($event)" ></app-show-tables>
+</ng-template>
+
+<ng-template #showHistory let-modal>
+  <app-history (closeModal)="onCloseModal($event)" ></app-history>
+</ng-template>
+
+<ng-template #showRatings let-modal>
+  <app-ratings (closeModal)="onCloseModal($event)" ></app-ratings>
+</ng-template>

@@ -4,6 +4,9 @@ $color-azul-oscuro: #2874A6;
 $color-blanco: #FFFFFF;
 $color-gris-claro: #D5DBDB;
 $color-verde-claro: #58D68D;
+.modal-title{
+  @include mulish-extrabold(20px, 22px, white)
+}
 .img-calendar{
   width: 100%;
   height: 100%;
@@ -11,7 +14,7 @@ $color-verde-claro: #58D68D;
   top: 0;
   left: 0;
 }
-input{
+.custom-input{
   border:none;
   @include mulish(16px,19.3px, white);
   &:focus,
@@ -23,10 +26,6 @@ input{
   }
   background-color: transparent;
 }
-.modal-title{
-  @include mulish-extrabold(20px, 22px, white)
-}
-
 .white-button {
   color: white;
   border-color: white;
@@ -36,24 +35,45 @@ input{
   background-color: white;
   color: #2874A6;
 }
-.custom-item{
-  background-color: transparent;
-  @include mulish(15px, 17.2px, $color-gris-claro);
-  width: 12.2vw;
+.custom-button{
+  background-color: $color-verde-claro;
+  border-color: transparent;
 }
-.custom-list{
-  margin-top: 1vh;
+input{
+  @include mulish(16px,19.3px, white);
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+  &::placeholder {
+    color: white;
+  }
+  background-color: $color-azul-claro;
 }
-.duration-container{
+.blue-button {
+  color: $color-azul-claro;
+  border-color: $color-azul-claro;
+  margin-top: 2vh;
+}
+.button-container{
   width: 100%;
   text-align: right;
 }
-.duration{
-  @include mulish(16px,19.3px, white);
+.blue-button:hover {
+  background-color: $color-azul-claro;
+  color: white;
 }
 .button-r-pathology{
   width: 0.5vw;
   background-color: transparent;
   border-color: transparent;
 }
-
+.green-button {
+  color: $color-verde-claro;
+  border-color: $color-verde-claro;
+  margin-top: 1vh;
+}
+.green-button:hover {
+  background-color: $color-verde-claro;
+  color: white;
+}
