@@ -43,3 +43,15 @@ $color-verde-claro: #58D68D;
     background-color: transparent;
     border-color: transparent;
 }
+.white-button {
+  color: white;
+  border-color: white;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
+.custom-li{
+  @include mulish (16px,17.2px,$color-gris-claro)
+}

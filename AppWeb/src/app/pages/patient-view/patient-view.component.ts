@@ -7,6 +7,8 @@ import { ReserveTableComponent } from './reserve-table/reserve-table.component';
 import { ShowTablesComponent } from './show-tables/show-tables.component';
 import { HistoryComponent } from './history/history.component';
 import { RatingsComponent } from './ratings/ratings.component';
+import { SaveCredentialsPService } from '../../services/save-credentials-p.service';
+import { ICredentialsP } from '../../models/credentialsP.model';
 @Component({
   selector: 'app-patient-view',
   standalone: true,
@@ -18,11 +20,15 @@ export class PatientViewComponent {
   private modalService = inject(NgbModal);
   formRA: FormGroup;
   closeResult = '';
-  constructor(private fb: FormBuilder, private _router: Router) {
+  credentials: ICredentialsP;
+  name: string;
+  constructor(private fb: FormBuilder, private _router: Router, private _credentialsService: SaveCredentialsPService) {
     this.formRA = this.fb.group({
       startDate: [''],
       procedures: this.fb.array(['']),
     });
+    this.credentials = this._credentialsService.getCredenciales();
+    this.name = this.credentials.nombre +'_'+ this.credentials.apellido1;
   }
   open(content: TemplateRef<any>) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(

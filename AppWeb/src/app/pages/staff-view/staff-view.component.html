@@ -1,4 +1,7 @@
 <div class="title-container">
+  <button class="back-button" (click)="goBack()">
+    <img src="../../../assets/images/backButton.png" class="img-back-button">
+  </button>
     <p class="Title">HospiTec</p>
 </div>
 <img class="background-image" src="../../../assets/images/staff-view/staff-banner.jpg">
@@ -124,6 +127,7 @@
 </div>
 
 <h1 class="Title-view">Bienvenido Administrador</h1>
+<h1 class="Title-name">Bienvenido {{name}}</h1>
 
 <!-- Templates for Room managemnt -->
 <ng-template #newRoomForm let-modal>

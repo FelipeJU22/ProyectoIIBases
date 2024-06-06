@@ -1,5 +1,9 @@
 @import '../../../../mixins.scss';
-
+$color-azul-claro: #5DADE2;
+$color-azul-oscuro: #2874A6;
+$color-blanco: #FFFFFF;
+$color-gris-claro: #D5DBDB;
+$color-verde-claro: #58D68D;
 .modal-title {
     @include mulish-extrabold(20px, 22px, white)
 }
@@ -45,4 +49,13 @@ input {
 
 .list-item span {
     margin-right: 10px;
+}
+.green-button {
+  color: $color-verde-claro;
+  border-color: $color-verde-claro;
+  margin-top: 1vh;
+}
+.green-button:hover {
+  background-color: $color-verde-claro;
+  color: white;
 }

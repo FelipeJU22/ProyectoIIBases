@@ -5,10 +5,10 @@
             (click)="closeModal.emit('Cross click')"></button>
     </div>
     <ul>
-        <li *ngFor="let room of roomList">
+        <li *ngFor="let room of roomList" class="li-custom">
             {{ room.numeroSalon }}
             {{ room.nombreSalon }}
-            <button (click)="selectRoom(room)">Modificar</button>
+            <button class="btn btn-outline green-button"  (click)="selectRoom(room)">Modificar</button>
         </li>
     </ul>
 </div>
@@ -23,20 +23,20 @@
         <form [formGroup]="modifyForm" (ngSubmit)="submitModification()">
             <!-- <input id="roomNumber" formControlName="roomNumber" disabled defaultValue="1000" type="text" /> -->
 
-            <label for="roomName">Nombre Salón</label>
+            <label for="roomName" class="li-custom">Nombre Salón</label>
             <input id="roomName" formControlName="roomName" type="text" />
 
-            <label for="roomCapacity">Capacidad Salón</label>
+            <label for="roomCapacity" class="li-custom">Capacidad Salón</label>
             <input id="roomCapacity" formControlName="roomCapacity" type="text" />
 
-            <label for="floor">Piso</label>
+            <label for="floor" class="li-custom">Piso</label>
             <input id="floor" formControlName="floor" type="text" />
 
-            <label for="gender">Género</label>
+            <label for="gender" class="li-custom">Género</label>
             <input id="gender" formControlName="gender" type="text" />
 
-            <button type="submit">Guardar</button>
-            <button type="button" (click)="view = 'list'">Cancelar</button>
+            <button type="submit" class="btn btn-outline blue-button">Guardar</button>
+            <button type="button" (click)="view = 'list'" class="btn btn-outline blue-button">Cancelar</button>
         </form>
     </div>
 </div>

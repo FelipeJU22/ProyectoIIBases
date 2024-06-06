@@ -10,7 +10,7 @@
             <input placeholder="Número" id="number" formControlName="number" />
         </div>
         <div class="subsection">
-            <p><b>Salón:</b></p>
+            <p class="custom-p">Salón:</p>
             <label *ngFor="let room of roomList; let i = index">
                 <input type="radio" formControlName="room" [value]="room" />
                 {{ room.nombreSalon }}
@@ -18,7 +18,7 @@
         </div>
 
         <div class="subsection" formArrayName="equipment">
-            <p><b>Equipo Médico</b></p>
+            <p class="custom-p">Equipo Médico</p>
             <label *ngFor="let equipmentCtrl of equipmentControls; let i = index">
                 <input type="checkbox" [formControlName]="i" />
                 {{ equipmentList[i]?.nombre }}
@@ -26,7 +26,7 @@
         </div>
 
         <div class="subsection">
-            <p><b>Cuidados Intensivos</b></p>
+            <p class="custom-p">Cuidados Intensivos</p>
             <label for="uci">UCI</label>
             <input type="checkbox" id="uci" formControlName="uci" />
         </div>

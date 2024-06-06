@@ -104,3 +104,9 @@ input{
   top: 45%;
   right: 5%;
 }
+.Title-name{
+  @include mulish-extrabold(50px,57px,$color-azul-claro);
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}

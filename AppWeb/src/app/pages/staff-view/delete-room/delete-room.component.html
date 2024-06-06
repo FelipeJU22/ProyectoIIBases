@@ -5,12 +5,11 @@
 </div>
 
 <div class="modal-body" style="background-color: #5DADE2;">
-    <h3>Salón a eliminar</h3>
     <ul>
-        <li *ngFor="let room of roomList">
+        <li *ngFor="let room of roomList" class="custom-li">
             {{ room.numeroSalon }}
             {{ room.nombreSalon }}
-            <button (click)="deleteRoom(room.numeroSalon)">Eliminar</button>
+            <button (click)="deleteRoom(room.numeroSalon)" class="btn btn-outline white-button">Eliminar</button>
         </li>
     </ul>
 </div>

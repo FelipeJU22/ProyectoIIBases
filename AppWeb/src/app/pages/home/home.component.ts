@@ -144,6 +144,7 @@ export class HomeComponent {
       case 'Doctor':
         this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula=' + id + '&contrase%C3%B1a=' + password).subscribe((data: any) => {
           if (data.rol === 1 || data.rol === 2) {
+            this._credentialsPService.setCredenciales(data.nombre, data.apellido1, data.apellido2, data.cedula);
             this._router.navigate(['/doctor']);
           }
         })
@@ -159,6 +160,7 @@ export class HomeComponent {
       case 'Staff':
         this._http.get(GlobalComponent.APIUrl + 'Personal/LoginPersonal?cedula=' + id + '&contrase%C3%B1a=' + password).subscribe((data: any) => {
           if (data.rol === 3) {
+            this._credentialsPService.setCredenciales(data.nombre, data.apellido1, data.apellido2, data.cedula);
             this._router.navigate(['/personal'])
           }
         })

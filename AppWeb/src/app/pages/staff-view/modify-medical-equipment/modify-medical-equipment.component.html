@@ -5,11 +5,11 @@
             (click)="closeModal.emit('Cross click')"></button>
     </div>
     <ul>
-        <li *ngFor="let equipment of medicalEqList">
+        <li *ngFor="let equipment of medicalEqList" class="li-custom">
             {{ equipment.nombre }}
             {{ equipment.proveedor }}
             {{ equipment.cantidad }}
-            <button (click)="selectEquipment(equipment)">Modificar</button>
+            <button (click)="selectEquipment(equipment)" class="btn btn-outline green-button">Modificar</button>
         </li>
     </ul>
 </div>

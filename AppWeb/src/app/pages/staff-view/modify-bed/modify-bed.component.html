@@ -28,7 +28,7 @@
 
             <div>
                 <label for="number">Número</label>
-                <input id="number" formControlName="number" />
+                <input class="custom-input" id="number" formControlName="number" />
             </div>
             <div>
                 <label *ngFor="let room of roomList; let i = index">
@@ -48,7 +48,7 @@
 
                 <button class="btn btn-outline white-button" type="submit">Modificar Cama</button>
             </div>
-            <button (click)="view = 'list'">Cancelar</button>
+            <button (click)="view = 'list'" class="btn btn-outline white-button">Cancelar</button>
         </form>
     </div>
 </div>

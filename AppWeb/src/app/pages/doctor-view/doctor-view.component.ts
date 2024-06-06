@@ -7,6 +7,8 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular
 import { AddHistoryComponent } from './add-history/add-history.component';
 import { EditHistoryComponent } from './edit-history/edit-history.component';
 import { Router } from '@angular/router';
+import { SaveCredentialsPService } from '../../services/save-credentials-p.service';
+import { ICredentialsP } from '../../models/credentialsP.model';
 
 @Component({
   selector: 'app-doctor-view',
@@ -20,7 +22,9 @@ export class DoctorViewComponent {
 
   closeResult: string = '';
   formRG: FormGroup;
-  constructor(private _http: HttpClient, private fb: FormBuilder, private _router: Router) {
+  name: string;
+  credentials: ICredentialsP;
+  constructor(private _http: HttpClient, private fb: FormBuilder, private _router: Router, private _credentialsService: SaveCredentialsPService) {
     this.formRG = this.fb.group({
       name: [''],
       lastName1: [''],
@@ -37,6 +41,8 @@ export class DoctorViewComponent {
         })
       ])
     });
+    this.credentials = this._credentialsService.getCredenciales();
+    this.name = this.credentials.nombre +'_'+ this.credentials.apellido1;
 
   }
   ngOnInit() {

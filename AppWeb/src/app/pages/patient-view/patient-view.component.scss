@@ -51,6 +51,12 @@ $color-verde-claro: #58D68D;
   top: 45%;
   right: 5%;
 }
+.Title-name{
+  @include mulish-extrabold(50px,57px,$color-azul-claro);
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}
 .back-button{
   margin-top: -1.3vh;
   width: 2vw;

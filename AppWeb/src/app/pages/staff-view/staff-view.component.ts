@@ -20,6 +20,8 @@ import { ModifyBedComponent } from './modify-bed/modify-bed.component';
 import { DeletePersonalComponent } from './delete-personal/delete-personal.component';
 import { BulkLoadComponent } from './bulk-load/bulk-load.component';
 import { ReportComponent } from './report/report.component';
+import { SaveCredentialsPService } from '../../services/save-credentials-p.service';
+import { ICredentialsP } from '../../models/credentialsP.model';
 @Component({
   selector: 'app-staff-view',
   standalone: true,
@@ -56,8 +58,9 @@ export class StaffViewComponent {
   staffList: any[] = [];
   bedList: any[] = [];
   closeResult = '';
-
-  constructor(private fb: FormBuilder, private _router: Router, private config: NgbDatepickerConfig, private _http: HttpClient) {
+  name: string;
+  credentials: ICredentialsP;
+  constructor(private fb: FormBuilder, private _router: Router, private config: NgbDatepickerConfig, private _http: HttpClient, private _credentialsService: SaveCredentialsPService) {
     this.formNewRoom = this.fb.group({
       roomNumber: [''],
       roomName: [''],
@@ -65,6 +68,8 @@ export class StaffViewComponent {
       floor: [''],
       gender: ['']
     });
+    this.credentials = this._credentialsService.getCredenciales();
+    this.name = this.credentials.nombre +'_'+ this.credentials.apellido1;
   }
   ngOnInit() {
   }
@@ -192,5 +197,8 @@ export class StaffViewComponent {
         startDate: null,
       });
     }
+  }
+  goBack() {
+    this._router.navigate(['/home']);
   }
 }

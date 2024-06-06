@@ -5,11 +5,11 @@
             (click)="closeModal.emit('Cross click')"></button>
     </div>
     <ul>
-        <li *ngFor="let member of staffList">
+        <li *ngFor="let member of staffList" class="li-custom">
             {{ member.nombre }}
             {{ member.apellido1 }}
             {{ member.apellido2 }}
-            <button (click)="selectMember(member)">Modificar</button>
+            <button (click)="selectMember(member)"  class="btn btn-outline green-button">Modificar</button>
         </li>
     </ul>
 </div>
@@ -51,8 +51,8 @@
             <label for="password">Contraseña</label>
             <input id="password" formControlName="password" type="text" />
 
-            <button type="submit">Guardar</button>
-            <button type="button" (click)="view = 'list'">Cancelar</button>
+            <button type="submit" class="btn btn-outline blue-button">Guardar</button>
+            <button type="button" (click)="view = 'list'" class="btn btn-outline blue-button">Cancelar</button>
         </form>
     </div>
 </div>
