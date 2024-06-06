@@ -1,0 +1,78 @@
+@import '../../../mixins.scss';
+$color-azul-claro: #5DADE2;
+$color-azul-oscuro: #2874A6;
+$color-blanco: #FFFFFF;
+$color-gris-claro: #D5DBDB;
+$color-verde-claro: #58D68D;
+:host {
+  display: block;
+  height: 100%;
+}
+.title-container{
+  height: 10vh;
+  width: 100%;
+  background-color: $color-gris-claro;
+  display: flex;
+  align-items: center
+}
+.Title{
+  @include mulish-extrabold(24px, 26.5px, $color-verde-claro);
+  margin-left: 2vw;
+}
+.background-image{
+  width: 100%;
+}
+
+.options-container
+{
+  position: absolute;
+  top: 65%;
+  left: 27%;
+  display: flex;
+}
+.custom-card-body
+{
+  background-color: white;
+}
+.custom-card-title{
+  @include mulish-bold(20px, 23.3px, $color-azul-oscuro)
+}
+.custom-card-text
+{
+  @include mulish(15px,17.1px, $color-azul-oscuro)
+}
+.custom-button{
+  background-color: $color-verde-claro;
+  border-color: transparent;
+}
+.Title-view{
+  @include mulish-extrabold(50px,57px,white);
+  position: absolute;
+  top: 45%;
+  right: 5%;
+}
+.Title-name{
+  @include mulish-extrabold(50px,57px,$color-azul-claro);
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}
+.back-button{
+  margin-top: -1.3vh;
+  width: 2vw;
+  background-color: transparent;
+  border-color: transparent;
+}
+.img-back-button{
+  width: 2vw
+}
+.white-button {
+  color: white;
+  border-color: white;
+}
+
+.white-button:hover {
+  background-color: white;
+  color: #2874A6;
+}
+

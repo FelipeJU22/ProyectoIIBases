@@ -1,0 +1,37 @@
+<div *ngIf="view === 'list'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Selección de equipo médico</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <ul>
+        <li *ngFor="let equipment of medicalEqList" class="li-custom">
+            {{ equipment.nombre }}
+            {{ equipment.proveedor }}
+            {{ equipment.cantidad }}
+            <button (click)="selectEquipment(equipment)" class="btn btn-outline green-button">Modificar</button>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="view === 'form'">
+    <div class="modal-header" style="background-color: #2874A6;">
+        <p class="modal-title">Modificar {{selectedEquipment?.nombre}}</p>
+        <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+            (click)="closeModal.emit('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="modifyForm" (ngSubmit)="submitModification()">
+            <!-- <input id="roomNumber" formControlName="roomNumber" disabled defaultValue="1000" type="text" /> -->
+
+            <label for="provider">Proveedor</label>
+            <input id="provider" formControlName="provider" type="text" />
+
+            <label for="amount">Capacidad </label>
+            <input id="amount" formControlName="amount" type="text" />
+
+            <button type="submit">Guardar</button>
+            <button type="button" (click)="view = 'list'">Cancelar</button>
+        </form>
+    </div>
+</div>

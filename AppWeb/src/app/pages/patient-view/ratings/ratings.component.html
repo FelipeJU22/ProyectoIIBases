@@ -1,0 +1,25 @@
+<div class="modal-header" style="background-color: #2874A6;">
+  <p class="modal-title">Evaluación de servicio</p>
+  <button type="button" class="btn-close custom-close-btn" aria-label="Close" (click)="closeModal.emit('Cross click')"></button>
+</div>
+<div class="modal-body" style="background-color: #5DADE2;">
+  <p class="subtitle">Aseo hospital</p>
+  <ngb-rating [(rate)]="ratingA" (rateChange)="onRatingChangeA($event)" />
+  <hr />
+  <pre>Rate: <b>{{ ratingA }}</b></pre>
+  <p class="subtitle">Trato personal</p>
+  <ngb-rating [(rate)]="ratingT" (rateChange)="onRatingChangeT($event)" />
+  <hr />
+  <pre>Rate: <b>{{ ratingT }}</b></pre>
+  <p class="subtitle">Puntualidad citas</p>
+  <ngb-rating [(rate)]="ratingP" (rateChange)="onRatingChangeP($event)" />
+  <hr />
+  <pre>Rate: <b>{{ ratingP }}</b></pre>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="comentarios"></textarea>
+  </div>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+  <button type="button" class="btn btn-outline white-button" (click)="submitInfo()">Generar Evaluación</button>
+</div>

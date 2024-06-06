@@ -1,0 +1,47 @@
+@import '../../../../mixins.scss';
+$color-azul-claro: #5DADE2;
+$color-azul-oscuro: #2874A6;
+$color-blanco: #FFFFFF;
+$color-gris-claro: #D5DBDB;
+$color-verde-claro: #58D68D;
+.modal-title{
+  @include mulish-extrabold(20px, 22px, white)
+}
+th{
+  background-color: transparent;
+  border: 2px solid $color-gris-claro;
+  @include mulish(17px,19.2px, $color-gris-claro)
+}
+td{
+  background-color: transparent;
+  border: 2px solid $color-gris-claro;
+  @include mulish(17px,19.2px, $color-gris-claro)
+}
+.custom-table {
+  border-collapse: separate; /* Permite que border-radius se aplique correctamente */
+  border-spacing: 0; /* Quita el espacio entre bordes de celdas */
+  border: 1px solid #ccc; /* Opcional: bordes para la tabla */
+  border-radius: 10px; /* Ajusta el radio según tus necesidades */
+  overflow: hidden; /* Asegura que los bordes redondeados se mantengan */
+}
+
+.custom-table th,
+.custom-table td {
+  border-bottom: 1px solid #ccc; /* Opcional: bordes para las celdas */
+}
+
+.custom-table thead tr:first-child th:first-child {
+  border-top-left-radius: 10px; /* Esquina superior izquierda */
+}
+
+.custom-table thead tr:first-child th:last-child {
+  border-top-right-radius: 10px; /* Esquina superior derecha */
+}
+
+.custom-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px; /* Esquina inferior izquierda */
+}
+
+.custom-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px; /* Esquina inferior derecha */
+}

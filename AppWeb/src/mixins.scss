@@ -1,0 +1,62 @@
+@mixin poppins($font-size, $line-height, $color) {
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: $font-size ;
+    line-height: $line-height;
+    font-style: normal;
+    color: $color;
+
+}
+
+@mixin mulish-regular($font-size, $line-height, $color) {
+    font-family: Mulish;
+    font-weight: 400;
+    font-size: $font-size ;
+    line-height: $line-height;
+    font-style: normal;
+    color: $color
+}
+
+@mixin mulish-semibold($font-size, $line-height, $color) {
+    font-family: Mulish;
+    font-weight: 600;
+    font-size: $font-size ;
+    line-height: $line-height;
+    font-style: normal;
+    color: $color;
+}
+
+@mixin mulish-bold($font-size, $line-height, $color) {
+    font-family: Mulish;
+    font-weight: 700;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-style: normal;
+    color: $color;
+}
+
+@mixin mulish-extrabold($font-size, $line-height, $color) {
+    font-family: Mulish;
+    font-weight: 800;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-style: normal;
+    color: $color;
+}
+
+@mixin mulish-black($font-size, $line-height, $color) {
+    font-family: Mulish;
+    font-weight: 900;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-style: normal;
+    color: $color;
+}
+@mixin mulish($font-size, $line-height, $color){
+  font-family: Mulish;
+  font-weight: 700;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-style: normal;
+  color: $color;
+}

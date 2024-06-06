@@ -1,0 +1,35 @@
+<div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Ingresar personal</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+        (click)="closeModal.emit('Cross click')"></button>
+</div>
+
+<div class="modal-body" style="background-color: #5DADE2;">
+    <form [formGroup]="formNewStaff">
+        <input type="text" id="id" placeholder="Número de cédula" formControlName="id" />
+        <input type="text" id="phone" placeholder="Número de teléfono" formControlName="phone" />
+        <input type="text" id="name" placeholder="Nombre" formControlName="name" />
+        <input type="text" id="lastname1" placeholder="Primer apellido" formControlName="lastname1" />
+        <input type="text" id="lastname2" placeholder="Segundo apellido" formControlName="lastname2" />
+        <input type="text" id="driection" placeholder="Dirección" formControlName="direction" />
+        <input type="text" id="role" placeholder="Rol" formControlName="role" />
+        <div class="input-group">
+            <input id="birthDate" class="form-control" placeholder="yyyy-mm-dd" name="dp1" ngbDatepicker
+                #dp1="ngbDatepicker" placeholder="Fecha de nacimiento" formControlName="birthDate" />
+            <button class="btn btn-outline-secondary" (click)="dp1.toggle()" type="button">
+                <img class="img-calendar" src="../../../assets/images/calendar.png">
+            </button>
+        </div>
+        <div class="input-group">
+            <input id="startDate" class="form-control" placeholder="yyyy-mm-dd" name="dp2" ngbDatepicker
+                #dp2="ngbDatepicker" placeholder="Fecha de Ingreso" formControlName="startDate" />
+            <button class="btn btn-outline-secondary" (click)="dp2.toggle()" type="button">
+                <img class="img-calendar" src="../../../assets/images/calendar.png">
+            </button>
+        </div>
+        <input type="password" id="password" placeholder="Contraseña" formControlName="password" />
+    </form>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+  <button type="button" class="btn btn-outline white-button" (click)="addStaff()">Continuar</button>
+</div>

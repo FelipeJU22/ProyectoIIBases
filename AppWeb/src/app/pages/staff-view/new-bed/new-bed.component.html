@@ -1,0 +1,37 @@
+<div class="modal-header" style="background-color: #2874A6;">
+    <p class="modal-title">Añadir Cama</p>
+    <button type="button" class="btn-close custom-close-btn" aria-label="Close"
+        (click)="closeModal.emit('Cross click')"></button>
+</div>
+
+<div class="modal-body" style="background-color: #5DADE2;">
+    <form [formGroup]="formNewBed" (ngSubmit)="addBed()">
+        <div>
+            <input placeholder="Número" id="number" formControlName="number" />
+        </div>
+        <div class="subsection">
+            <p class="custom-p">Salón:</p>
+            <label *ngFor="let room of roomList; let i = index">
+                <input type="radio" formControlName="room" [value]="room" />
+                {{ room.nombreSalon }}
+            </label>
+        </div>
+
+        <div class="subsection" formArrayName="equipment">
+            <p class="custom-p">Equipo Médico</p>
+            <label *ngFor="let equipmentCtrl of equipmentControls; let i = index">
+                <input type="checkbox" [formControlName]="i" />
+                {{ equipmentList[i]?.nombre }}
+            </label>
+        </div>
+
+        <div class="subsection">
+            <p class="custom-p">Cuidados Intensivos</p>
+            <label for="uci">UCI</label>
+            <input type="checkbox" id="uci" formControlName="uci" />
+        </div>
+        <button class="btn btn-outline white-button" type="submit">Añadir Cama</button>
+    </form>
+</div>
+<div class="modal-footer" style="background-color: #2874A6;">
+</div>

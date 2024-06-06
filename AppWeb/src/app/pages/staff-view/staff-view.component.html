@@ -1,0 +1,192 @@
+<div class="title-container">
+  <button class="back-button" (click)="goBack()">
+    <img src="../../../assets/images/backButton.png" class="img-back-button">
+  </button>
+    <p class="Title">HospiTec</p>
+</div>
+<img class="background-image" src="../../../assets/images/staff-view/staff-banner.jpg">
+<div class="options-container">
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/habitacion-medica.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Salones</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="open(newRoomForm)">Crear Salón</button>
+                        <button ngbDropdownItem (click)="getRooms2('modify', modifyRoom)">Modificar Salón</button>
+                        <button ngbDropdownItem (click)="getRooms2('delete', deleteRoom)">Eliminar Salón</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/equipo-medico.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Equipo Médico</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="open(MedicalEquipmentForm)">Agregar equipo médico</button>
+                        <button ngbDropdownItem (click)="getEquipment(modifyEquipment)">Modificar equipo médico</button>
+                        <button disabled ngbDropdownItem>Eliminar equipo médico</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/patient-view/patient-reserv.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Camas</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="open(bedForm)">Agregar camas</button>
+                        <button ngbDropdownItem (click)="getBeds(modifyBed)">Modificar camas</button>
+                        <button disabled ngbDropdownItem>Eliminar camas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/procedimientos.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Procedimientos Médicos</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="open(procedureForm)">Agregar Procedimiento</button>
+                        <button ngbDropdownItem (click)="getProcedure(modifyProcedure)">Modificar Procedimiento</button>
+                        <button disabled ngbDropdownItem>Eliminar Procedimiento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/personal-medico.jpg" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Gestión de Personal</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn btn-primary custom-button" id="dropdownBasic1" ngbDropdownToggle>
+                        Opciones
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="open(staffForm)">Agregar Personal</button>
+                        <button ngbDropdownItem (click)="getStaff(modifyStaff)">Modificar Personal</button>
+                        <button ngbDropdownItem (click)="open(deleteStaff)">Eliminar Personal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/staff-view/subir-excel.png" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Carga de Pacientes</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <button class="btn btn-primary custom-button" (click)="open(bulkUpload)">Subir Pacientes</button>
+        </div>
+    </div>
+    <div class="card mx-2" style="width: 18rem;">
+        <img src="../../../assets/images/patient-view/rating.png" class="card-img-top" alt="...">
+        <div class="card-body custom-card-body">
+            <h5 class="card-title custom-card-title">Reporte de áreas de mejora</h5>
+            <p class="card-text custom-card-text">Some quick example text to build on the card title and make up the
+                bulk of the card's content.</p>
+            <a class="btn btn-primary custom-button" (click)="open(report)">Continuar</a>
+        </div>
+    </div>
+</div>
+
+<h1 class="Title-view">Bienvenido Administrador</h1>
+<h1 class="Title-name">Bienvenido {{name}}</h1>
+
+<!-- Templates for Room managemnt -->
+<ng-template #newRoomForm let-modal>
+    <app-new-room [formNewRoom]="formNewRoom" (closeModal)="onCloseModal($event)"></app-new-room>
+</ng-template>
+
+<ng-template #modifyRoom let-modal>
+    <app-modify-instance [roomList]="roomList" (closeModal)="onCloseModal($event)"></app-modify-instance>
+</ng-template>
+
+<ng-template #deleteRoom let-modal>
+    <app-delete-room [roomList]="roomList" (closeModal)="onCloseModal($event)"></app-delete-room>
+</ng-template>
+
+<!-- Templates for Equipmnet managemnt -->
+<ng-template #MedicalEquipmentForm let-modal>
+    <app-new-medical-equipment (closeModal)="onCloseModal($event)"></app-new-medical-equipment>
+</ng-template>
+
+<ng-template #modifyEquipment let-modal>
+    <app-modify-medical-equipment [medicalEqList]="medicalEqList"
+        (closeModal)="onCloseModal($event)"></app-modify-medical-equipment>
+</ng-template>
+
+<!-- Templates for Bed managemnt -->
+<ng-template #bedForm let-modal>
+    <app-new-bed (closeModal)="onCloseModal($event)"></app-new-bed>
+</ng-template>
+
+<ng-template #modifyBed let-modal>
+    <app-modify-bed [bedList]="bedList" (closeModal)="onCloseModal($event)"></app-modify-bed>
+</ng-template>
+
+<!-- Templates for Procedure managemnt -->
+<ng-template #procedureForm let-modal>
+    <app-new-procedure (closeModal)="onCloseModal($event)"></app-new-procedure>
+</ng-template>
+
+<ng-template #modifyProcedure let-modal>
+    <app-modify-procedure [procedureList]="procedureList" (closeModal)="onCloseModal($event)"></app-modify-procedure>
+</ng-template>
+
+<!-- Templates for Personal managemnt -->
+<ng-template #staffForm let-modal>
+    <app-new-personal (closeModal)="onCloseModal($event)"></app-new-personal>
+</ng-template>
+
+<ng-template #modifyStaff let-modal>
+    <app-modify-personal [staffList]="staffList" (closeModal)="onCloseModal($event)"></app-modify-personal>
+</ng-template>
+
+<ng-template #deleteStaff let-modal>
+    <app-delete-personal (closeModal)="onCloseModal($event)"></app-delete-personal>
+</ng-template>
+
+<!-- Templates for Personal managemnt -->
+<ng-template #bulkUpload let-modal>
+    <app-bulk-load (closeModal)="onCloseModal($event)"></app-bulk-load>
+</ng-template>
+<ng-template #report let-modal >
+  <app-report (closeModal)="onCloseModal($event)"></app-report>
+</ng-template>
